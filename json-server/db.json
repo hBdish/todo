@@ -1,0 +1,50 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "project1"
+    },
+    {
+      "id": 2,
+      "name": "project2"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "project1": 1,
+      "number": 1,
+      "title": "task1",
+      "description": "Страница с задачами должна содержать в себе три колонки c возможностью изменения статуса с помощью drag-n-drop:",
+      "dateCreated": "01.01.2015",
+      "timeInWork": 100,
+      "dateCompleted": "03.01.2015",
+      "priority": "HIGH",
+      "status": "Queue"
+    },
+    {
+      "id": 2,
+      "project1": 1,
+      "number": 1,
+      "title": "task2",
+      "description": "Даже если все подзадачи выполнены, это не значит, что и основная становится выполненной",
+      "dateCreated": "02.01.2015",
+      "timeInWork": 100,
+      "dateCompleted": "08.01.2015",
+      "priority": "HIGH",
+      "status": "Development"
+    },
+    {
+      "id": 3,
+      "project1": 1,
+      "number": 1,
+      "title": "task3",
+      "description": "Адаптация под мобильные устройства",
+      "dateCreated": "10.01.2015",
+      "timeInWork": 100,
+      "dateCompleted": "12.01.2015",
+      "priority": "HIGH",
+      "status": "DONE"
+    }
+  ]
+}

@@ -1,5 +1,11 @@
+import { TaskCard } from "../../components";
+
 function ProjectPage() {
-  return <div>ProjectPage</div>;
+  return (
+    <div>
+      <TaskCard />
+    </div>
+  );
 }
 
 export default ProjectPage;
