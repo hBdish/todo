@@ -1,7 +1,7 @@
 // interface for Saga Response
-declare interface ResponseGenerator {
+declare interface ResponseGenerator<T> {
   config?: any;
-  data?: any;
+  data: T;
   headers?: any;
   request?: any;
   status?: number;
