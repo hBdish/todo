@@ -1,4 +1,4 @@
-import { TaskActionTypes } from "../consts";
+import {TaskActionTypes} from "../consts";
 
 interface TaskType {
   id: number;
@@ -19,7 +19,7 @@ interface TasksSchema {
   error?: string;
 }
 
-interface TaskAction {
+interface TaskActionFetch {
   type: TaskActionTypes.FETCH_TASKS;
 }
 
@@ -33,6 +33,6 @@ interface TaskActionError {
   payload: string;
 }
 
-type FetchTaskAction = TaskAction | TaskActionSuccess | TaskActionError;
+type TaskAction = TaskActionFetch | TaskActionSuccess | TaskActionError;
 
-export type { TasksSchema, TaskType, FetchTaskAction };
+export type {TasksSchema, TaskType, TaskAction};

@@ -1,5 +1,5 @@
-import { TaskActionTypes } from "../consts";
-import { FetchTaskAction, TasksSchema } from "../types";
+import {TaskActionTypes} from "../consts";
+import {TaskAction, TasksSchema} from "../types";
 
 const initialState: TasksSchema = {
   data: [],
@@ -9,15 +9,15 @@ const initialState: TasksSchema = {
 
 export const taskReducer = (
   state = initialState,
-  action: FetchTaskAction
+  action: TaskAction
 ): TasksSchema => {
   switch (action.type) {
     case TaskActionTypes.FETCH_TASKS:
-      return { isLoading: true, data: [] };
+      return {isLoading: true, data: []};
     case TaskActionTypes.FETCH_TASKS_SUCCESS:
-      return { isLoading: false, data: action.payload };
+      return {isLoading: false, data: action.payload};
     case TaskActionTypes.FETCH_TASKS_ERROR:
-      return { isLoading: false, error: action.payload };
+      return {isLoading: false, error: action.payload};
     default:
       return state;
   }
