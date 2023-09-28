@@ -6,6 +6,11 @@ interface TasksSchema {
   data?: TaskType[];
   isLoading?: boolean;
   error?: string;
+
+  //
+  queueTasks?: Map<string, TaskType>;
+  developmentTasks?: Map<string, TaskType>;
+  doneTasks?: Map<string, TaskType>;
 }
 
 interface TasksActionFetch {

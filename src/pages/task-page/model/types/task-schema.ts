@@ -1,7 +1,9 @@
 import {TaskActionTypes, TaskSyncActionTypes} from "../consts";
 
+export type TaskStatus = "Queue" | "Development" | "Done"
+
 interface TaskType {
-  id: number;
+  id: string;
   project1: number;
   number: number;
   title: string;
@@ -10,7 +12,7 @@ interface TaskType {
   timeInWork: number;
   dateCompleted: string;
   priority: string;
-  status: string;
+  status: TaskStatus;
 }
 
 interface TaskSchema {

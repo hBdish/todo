@@ -1,6 +1,7 @@
 .table {
   display: grid;
   margin: 0;
+  //height: 1000px;
 }
 
 .tableHeader {
@@ -12,11 +13,23 @@
   align-items: center;
   min-height: 32px;
   padding: 16px 4px;
+  margin-left: 16px;
+  margin-top: 8px;
+  background: var(--backgrond-table-color);
 }
 
 .tableCell {
   min-height: 32px;
   padding: 16px 4px;
+  margin-left: 16px;
+  background: var(--backgrond-table-color);
+}
+
+.tableHeaderCell,
+.tableCell {
+  &:last-child {
+    margin-right: 16px;
+  }
 }
 
 .tableRow {
