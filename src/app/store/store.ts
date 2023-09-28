@@ -1,14 +1,16 @@
 import {applyMiddleware, combineReducers, createStore} from "redux"; // createStore использую осознанно, так как по ТЗ тулкит использовать запрещено
 import createSagaMiddleware from "redux-saga";
-import {taskReducer, tasksSaga} from "../../pages";
+import {tasksReducer, tasksSaga} from "../../pages";
 import {projectReducer, projectSaga} from "../../components";
+import {taskReducer} from "../../pages/task-page/model/slice/task-reducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = createStore(
   combineReducers({
     projects: projectReducer,
-    tasks: taskReducer,
+    tasks: tasksReducer,
+    task: taskReducer,
   }),
   applyMiddleware(sagaMiddleware)
 );

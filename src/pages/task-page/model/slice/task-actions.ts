@@ -1,6 +1,6 @@
-import { TaskActionTypes } from "../consts";
-import { TaskType } from "../types";
+import {TasksActionTypes} from "../consts";
+import {TaskType} from "../types/task-schema";
 
 export const requestTasksSuccess = (data: TaskType[]) => {
-  return { type: TaskActionTypes.FETCH_TASKS_SUCCESS, payload: data };
+  return {type: TasksActionTypes.FETCH_TASKS_SUCCESS, payload: data};
 };
