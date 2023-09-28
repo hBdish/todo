@@ -15,7 +15,8 @@ interface TableRowProps extends TableCommonProps {
 
 type TableHeaderProps = TableCommonProps
 
-type TableCellProps = TableCommonProps
+interface TableCellProps extends TableCommonProps {
+}
 
 type TableHeaderCellProps = TableCommonProps
 

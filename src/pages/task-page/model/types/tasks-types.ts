@@ -1,6 +1,5 @@
-import {TasksActionTypes} from "../consts";
-import {TaskType} from "./task-schema";
-
+import {TasksActionTypes, TasksSyncActionTypes} from "../consts";
+import {TaskStatus, TaskType} from "./task-schema";
 
 interface TasksSchema {
   data?: TaskType[];
@@ -8,9 +7,22 @@ interface TasksSchema {
   error?: string;
 
   //
+  allMap?: Map<TaskStatus, Map<string, TaskType>>
+
+  //
   queueTasks?: Map<string, TaskType>;
   developmentTasks?: Map<string, TaskType>;
   doneTasks?: Map<string, TaskType>;
+}
+
+export interface TasksMoveType {
+  task: TaskType
+  keySet: TaskStatus
+}
+
+interface TasksActionMove {
+  type: TasksSyncActionTypes.MOVE_TASK;
+  payload: TasksMoveType
 }
 
 interface TasksActionFetch {
@@ -27,6 +39,7 @@ interface TasksActionError {
   payload: string;
 }
 
-type TasksAction = TasksActionFetch | TasksActionSuccess | TasksActionError;
+type TasksAsyncAction = TasksActionFetch | TasksActionSuccess | TasksActionError;
+type TasksAction = TasksAsyncAction | TasksActionMove
 
 export type {TasksSchema, TasksAction};

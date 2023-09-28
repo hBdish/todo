@@ -4,7 +4,7 @@ export type TaskStatus = "Queue" | "Development" | "Done"
 
 interface TaskType {
   id: string;
-  project1: number;
+  projectId: number;
   number: number;
   title: string;
   description: string;

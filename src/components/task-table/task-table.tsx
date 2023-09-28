@@ -1,18 +1,74 @@
-import styles from './task-table.module.scss';
-import {TableCell, TableRow} from "../../ui/table/components";
+import {TableRow} from "../../ui/table/components";
 import {Table} from "../../ui/table";
-import {useAppSelector} from "../../shared";
+import {useAppDispatch, useAppSelector} from "../../shared";
+import {useEffect} from "react";
+import {tasksMove} from "../../pages/task-page/model/slice/tasks-actions";
+import {TASK_DND_TYPE} from "../../pages/task-page/model/consts";
+import {TaskType} from "../../pages/task-page/model/types/task-schema";
+import {useDrop} from "react-dnd";
 import {TaskCard} from "../task-card";
+import styles from './task-table.module.scss'
 
 interface TaskTableProps {
   className?: string
 }
 
-
 const TaskTable = (props: TaskTableProps) => {
   const {className} = props;
-  const {doneTasks, queueTasks, developmentTasks} = useAppSelector((state) => state.tasks);
+  const dispatch = useAppDispatch()
+  const {allMap} = useAppSelector((state) => state.tasks);
 
+  useEffect(() => {
+    console.log(allMap?.get("Queue"))
+    console.log(allMap?.get("Done"))
+    console.log(allMap?.get("Development"))
+  }, [allMap]);
+
+  const [collectedProps, dropQueue] = useDrop(
+    () => ({
+      accept: TASK_DND_TYPE,
+      options: {
+        cell: "Queue"
+      },
+      drop: (task) => {
+        const newTask = task as { type: string, task: TaskType }
+        dispatch(tasksMove({task: newTask.task, keySet: "Queue"}))
+      },
+      collect: (monitor) => ({
+        isOverQueue: !!monitor.isOver()
+      }),
+
+    }),
+    []
+  )
+
+  const [{isOverDevelopment}, dropDevelopment] = useDrop(
+    () => ({
+      accept: TASK_DND_TYPE,
+      drop: (task) => {
+        console.log("dropDevelopment")
+        console.log(task)
+      },
+      collect: (monitor) => ({
+        isOverDevelopment: !!monitor.isOver()
+      })
+    }),
+    []
+  )
+
+  const [{isOverDone}, dropDone] = useDrop(
+    () => ({
+      accept: TASK_DND_TYPE,
+      drop: (task) => {
+        console.log("dropDone")
+        console.log(task)
+      },
+      collect: (monitor) => ({
+        isOverDone: !!monitor.isOver()
+      })
+    }),
+    []
+  )
 
   return (
     <Table columnWidths={['auto', 'auto', 'auto']}>
@@ -22,21 +78,21 @@ const TaskTable = (props: TaskTableProps) => {
         <Table.HeaderCell>Done</Table.HeaderCell>
       </TableRow>
       <Table.Row>
-        <TableCell className={styles.taskTableCell}>
-          {Array.from(queueTasks!.values())?.map(task =>
-            <TaskCard key={task.id} name={task.title}></TaskCard>
+        <Table.Cell myRef={dropQueue} className={styles.taskTableCell}>
+          {Array.from(allMap!.get("Queue")!.values())?.map(task =>
+            <TaskCard key={task.id} task={task}></TaskCard>
           )}
-        </TableCell>
-        <TableCell className={styles.taskTableCell}>
-          {Array.from(developmentTasks!.values())?.map(task =>
-            <TaskCard key={task.id} name={task.title}></TaskCard>
+        </Table.Cell>
+        <Table.Cell myRef={dropDevelopment} className={styles.taskTableCell}>
+          {Array.from(allMap!.get("Development")!.values())?.map(task =>
+            <TaskCard key={task.id} task={task}></TaskCard>
           )}
-        </TableCell>
-        <TableCell className={styles.taskTableCell}>
-          {Array.from(doneTasks!.values())?.map(task =>
-            <TaskCard key={task.id} name={task.title}></TaskCard>
+        </Table.Cell>
+        <Table.Cell myRef={dropDone} className={styles.taskTableCell}>
+          {Array.from(allMap!.get("Done")!.values())?.map(task =>
+            <TaskCard key={task.id} task={task}></TaskCard>
           )}
-        </TableCell>
+        </Table.Cell>
       </Table.Row>
     </Table>
   );
