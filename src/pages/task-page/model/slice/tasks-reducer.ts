@@ -25,16 +25,17 @@ export const tasksReducer = (
   switch (action.type) {
     case TasksSyncActionTypes.MOVE_TASK:
 
-
       const keySet = action.payload.keySet
       const moveTask = action.payload.task
 
-      console.log(keySet)
-      console.log(moveTask.status)
-      console.log(moveTask)
+      const map = state.allMap
+      map?.get(moveTask.status)?.delete(moveTask.id)
+      moveTask.status = keySet
+      map?.get(keySet)?.set(moveTask.id, moveTask)
 
-
-      return state;
+      return {
+        allMap: map
+      };
     case TasksActionTypes.FETCH_TASKS:
       return {isLoading: true, data: []};
     case TasksActionTypes.FETCH_TASKS_SUCCESS:

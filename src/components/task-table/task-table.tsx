@@ -1,7 +1,6 @@
 import {TableRow} from "../../ui/table/components";
 import {Table} from "../../ui/table";
 import {useAppDispatch, useAppSelector} from "../../shared";
-import {useEffect} from "react";
 import {tasksMove} from "../../pages/task-page/model/slice/tasks-actions";
 import {TASK_DND_TYPE} from "../../pages/task-page/model/consts";
 import {TaskType} from "../../pages/task-page/model/types/task-schema";
@@ -17,12 +16,6 @@ const TaskTable = (props: TaskTableProps) => {
   const {className} = props;
   const dispatch = useAppDispatch()
   const {allMap} = useAppSelector((state) => state.tasks);
-
-  useEffect(() => {
-    console.log(allMap?.get("Queue"))
-    console.log(allMap?.get("Done"))
-    console.log(allMap?.get("Development"))
-  }, [allMap]);
 
   const [collectedProps, dropQueue] = useDrop(
     () => ({
@@ -46,8 +39,8 @@ const TaskTable = (props: TaskTableProps) => {
     () => ({
       accept: TASK_DND_TYPE,
       drop: (task) => {
-        console.log("dropDevelopment")
-        console.log(task)
+        const newTask = task as { type: string, task: TaskType }
+        dispatch(tasksMove({task: newTask.task, keySet: "Development"}))
       },
       collect: (monitor) => ({
         isOverDevelopment: !!monitor.isOver()
@@ -60,8 +53,8 @@ const TaskTable = (props: TaskTableProps) => {
     () => ({
       accept: TASK_DND_TYPE,
       drop: (task) => {
-        console.log("dropDone")
-        console.log(task)
+        const newTask = task as { type: string, task: TaskType }
+        dispatch(tasksMove({task: newTask.task, keySet: "Done"}))
       },
       collect: (monitor) => ({
         isOverDone: !!monitor.isOver()
