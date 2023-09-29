@@ -22,7 +22,7 @@
       "timeInWork": 100,
       "dateCompleted": "03.01.2015",
       "priority": "HIGH",
-      "status": "Queue"
+      "status": "Done"
     },
     {
       "id": "2",
@@ -34,7 +34,7 @@
       "timeInWork": 100,
       "dateCompleted": "08.01.2015",
       "priority": "HIGH",
-      "status": "Development"
+      "status": "Queue"
     },
     {
       "id": "3",
@@ -58,7 +58,19 @@
       "timeInWork": 100,
       "dateCompleted": "12.01.2015",
       "priority": "HIGH",
-      "status": "Done"
+      "status": "Queue"
+    },
+    {
+      "id": "5",
+      "projectId": "2",
+      "number": "1",
+      "title": "task1",
+      "description": "TEST TASK 4",
+      "dateCreated": "10.01.2015",
+      "timeInWork": 100,
+      "dateCompleted": "12.01.2015",
+      "priority": "HIGH",
+      "status": "Queue"
     }
   ]
 }

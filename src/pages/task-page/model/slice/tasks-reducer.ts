@@ -55,10 +55,7 @@ export const tasksReducer = (
             doneMap.set(task.id, task)
             return null
           case "Queue":
-            // state.allMap?.get("Queue").set(task.id, task)
             queueMap.set(task.id, task)
-            // state.allMap
-            //   ?.get("Queue")?.set(task.id, task)
             return null
           default:
             return state
