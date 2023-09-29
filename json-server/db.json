@@ -22,7 +22,7 @@
       "timeInWork": 100,
       "dateCompleted": "03.01.2015",
       "priority": "HIGH",
-      "status": "Development"
+      "status": "Queue"
     },
     {
       "id": "2",
@@ -34,7 +34,7 @@
       "timeInWork": 100,
       "dateCompleted": "08.01.2015",
       "priority": "HIGH",
-      "status": "Done"
+      "status": "Development"
     },
     {
       "id": "3",
@@ -46,7 +46,7 @@
       "timeInWork": 100,
       "dateCompleted": "12.01.2015",
       "priority": "HIGH",
-      "status": "Queue"
+      "status": "Done"
     },
     {
       "id": "4",
@@ -58,7 +58,7 @@
       "timeInWork": 100,
       "dateCompleted": "12.01.2015",
       "priority": "HIGH",
-      "status": "Queue"
+      "status": "Development"
     },
     {
       "id": "5",

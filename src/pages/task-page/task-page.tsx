@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 import {TasksActionTypes} from "./model/consts";
 import {DndProvider} from "react-dnd-multi-backend";
 import {HTML5toTouch} from "rdndmb-html5-to-touch";
-
+import {PreviewTask} from "../../components/task-card-preview/preview-task";
 
 function TaskPage() {
   const {isLoading} = useAppSelector((state) => state.tasks);
@@ -26,6 +26,7 @@ function TaskPage() {
 
   return (
     <DndProvider options={HTML5toTouch}>
+      <PreviewTask/>
       <TaskTable/>
     </DndProvider>
   );
