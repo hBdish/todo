@@ -1,46 +1,96 @@
-# Getting Started with Create React App
+# Привет 😉
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Тестовое задание Front-End
 
-## Available Scripts
+Описание тестового задания на позицию Junior Front-End-разработчика в Uptrader для проверки ваших знаний React.
 
-In the project directory, you can run:
+## Задача
 
-### `npm start`
+Создать SPA TODO-приложение с использованием React и Redux.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Во Frontend части вашего приложения разрешается использовать ТОЛЬКО!!!:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Create-react-app и все библиотеки с ним связанные
 
-### `npm test`
+- react-router-dom
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- axios и Redux-saga (По желанию)
 
-### `npm run build`
+- typescript или prop-types будет плюсом
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- react-helmet
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- redux\react-redux
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- sass и\или styled-jsx, classnames
 
-### `npm run eject`
+- babel\eslint\prettier
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Любая библиотека для drag-n-drop
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Любая библиотека для удобной работы с текстом(например tinymce)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Любая библиотека для работы с файлами
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Любая библиотека для работы со временем
 
-## Learn More
+## Требования задачи
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Ваш проект должен содержать 2 страницы
+    - Страница с выбором проекта
+    - Страница с задачами
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Все остальные действия должны происходить в модальных окнах
+
+- Страница с задачами должна содержать в себе три колонки c возможностью изменения статуса с помощью drag-n-drop:
+    - Queue
+    - Development
+    - Done
+
+- Каждая задача имеет:
+    - Номер задачи
+    - Заголовок
+    - Описание
+    - Дата создания
+    - Время в работе
+    - Дата окончания
+    - Приоритет
+    - Вложенные файлы
+    - Текущий статус
+    - Возможность добавлять подзадачи;
+    - Система каскадных комментариев(т.е. Можно оставить комментарий под коментарием под комментарием...
+      Пример можно увидеть на reddit или picabu)
+
+- Возможность редактирования задачи
+
+- Даже если все подзадачи выполнены, это не значит, что и основная становится выполненной
+
+- Поиск по номеру задачи и заголовку
+
+- Возможность создавать задачу
+
+- Адаптация под мобильные устройства
+
+- Обилие плавных, красивых анимаций\отзывчивость сайта на действия юзера\ Дополнительный функционал только
+  приветствуются
+
+- Приложение должно сохранять все данные после перезагрузки страницы есть 2 варианта
+    - Можете написать свой backend или использовать облачные решения, в таком случае допускается использование
+      только `Redux-saga`
+    - Или можете использовать cookie и localStorage для сохранения всех данных
+
+- Когда закончите обязательно разверните приложение на любимом хостинге)
+
+## FAQ
+
+- Redux toolkit запрещен. Во фронтенд части вашего приложения можно использовать только разрешенные библиотеки!
+
+- Дизайн вы выполняете на свой вкус, мы вам доверяем;)
+
+- Пункт с сохранением данных обновлен. Если вы хотите написать свой backend или воспользоваться облачными решениями. Вы
+  можете, но для взаимодействия с ними разрешается использовать только `Redux-saga` и `axios`
+
+# В Readme файле будет достаточно ссылки на деплой вашего выполненного приложения
+
+p.s. Желаем удачи) 😉
+
