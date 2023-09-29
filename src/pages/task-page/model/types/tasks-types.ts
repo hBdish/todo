@@ -5,14 +5,7 @@ interface TasksSchema {
   data?: TaskType[];
   isLoading?: boolean;
   error?: string;
-
-  //
   allMap?: Map<TaskStatus, Map<string, TaskType>>
-
-  //
-  queueTasks?: Map<string, TaskType>;
-  developmentTasks?: Map<string, TaskType>;
-  doneTasks?: Map<string, TaskType>;
 }
 
 export interface TasksMoveType {

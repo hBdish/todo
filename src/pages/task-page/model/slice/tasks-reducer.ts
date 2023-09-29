@@ -1,6 +1,7 @@
 import {TasksActionTypes, TasksSyncActionTypes} from "../consts";
 import {TasksAction, TasksSchema} from "../types";
 import {TaskStatus, TaskType} from "../types/task-schema";
+import {moveTaskHelper, sortTasks} from "../helpers/tasks-helpers";
 
 const initialState: TasksSchema = {
   data: [],
@@ -12,11 +13,8 @@ const initialState: TasksSchema = {
     ['Done', new Map<string, TaskType>()],
     ['Development', new Map<string, TaskType>()],
   ]),
-
-  queueTasks: new Map<string, TaskType>(),
-  doneTasks: new Map<string, TaskType>(),
-  developmentTasks: new Map<string, TaskType>()
 };
+
 
 export const tasksReducer = (
   state = initialState,
@@ -24,14 +22,12 @@ export const tasksReducer = (
 ): TasksSchema => {
   switch (action.type) {
     case TasksSyncActionTypes.MOVE_TASK:
-
-      const keySet = action.payload.keySet
-      const moveTask = action.payload.task
-
-      const map = state.allMap
-      map?.get(moveTask.status)?.delete(moveTask.id)
-      moveTask.status = keySet
-      map?.get(keySet)?.set(moveTask.id, moveTask)
+      const map =
+        moveTaskHelper(
+          action.payload.keySet,
+          action.payload.task,
+          state.allMap
+        )
 
       return {
         allMap: map
@@ -39,37 +35,18 @@ export const tasksReducer = (
     case TasksActionTypes.FETCH_TASKS:
       return {isLoading: true, data: []};
     case TasksActionTypes.FETCH_TASKS_SUCCESS:
-      const allMap = new Map<TaskStatus, Map<string, TaskType>>()
-      const queueMap = new Map<string, TaskType>()
-      const developmentMap = new Map<string, TaskType>()
-      const doneMap = new Map<string, TaskType>()
-      const allTasksArray = action.payload
 
-      allTasksArray.map(task => {
-        switch (task.status) {
-          case "Development":
-
-            developmentMap.set(task.id, task)
-            return null
-          case "Done":
-            doneMap.set(task.id, task)
-            return null
-          case "Queue":
-            queueMap.set(task.id, task)
-            return null
-          default:
-            return state
-        }
-      })
-
-      allMap.set("Queue", queueMap).set("Done", doneMap).set("Development", developmentMap)
+      const allMap = sortTasks(
+        new Map<TaskStatus, Map<string, TaskType>>(),
+        new Map<string, TaskType>(),
+        new Map<string, TaskType>(),
+        new Map<string, TaskType>(),
+        action.payload
+      )
 
       return {
         isLoading: false,
         data: action.payload,
-        developmentTasks: developmentMap,
-        queueTasks: queueMap,
-        doneTasks: doneMap,
         allMap
       };
     case TasksActionTypes.FETCH_TASKS_ERROR:

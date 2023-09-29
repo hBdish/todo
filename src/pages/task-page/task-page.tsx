@@ -8,8 +8,7 @@ import {HTML5toTouch} from "rdndmb-html5-to-touch";
 
 
 function TaskPage() {
-  const {isLoading, data, doneTasks, queueTasks, developmentTasks} = useAppSelector((state) => state.tasks);
-  const {task, editableTask} = useAppSelector((state) => state.task);
+  const {isLoading} = useAppSelector((state) => state.tasks);
   const dispatch = useAppDispatch();
   const {id} = useParams<{
     id: string
@@ -33,42 +32,3 @@ function TaskPage() {
 }
 
 export default TaskPage;
-
-
-{/*{data?.map((el) => (*/
-}
-{/*  <button onClick={() => {*/
-}
-{/*    dispatch({type: TaskSyncActionTypes.SET_TASK, payload: el})*/
-}
-
-{/*    if (!task) {*/
-}
-{/*      return*/
-}
-{/*    }*/
-}
-
-{/*    dispatch({*/
-}
-{/*      type: TaskSyncActionTypes.SET_EDITABLE_TASK, payload: {*/
-}
-{/*        ...task,*/
-}
-{/*        status: "Done"*/
-}
-{/*      }*/
-}
-{/*    })*/
-}
-
-{/*    dispatch({*/
-}
-{/*      type: TaskActionTypes.PATCH_TASK*/
-}
-{/*    })*/
-}
-{/*  }}><TaskCard key={el.id}/></button>*/
-}
-{/*))}*/
-}
