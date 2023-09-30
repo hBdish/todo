@@ -1,4 +1,4 @@
-import {TaskActionTypes, TaskSyncActionTypes} from "../consts";
+import {TaskActionTypes, TaskSyncActionTypes} from "../../../index";
 
 export type TaskStatus = "Queue" | "Development" | "Done"
 

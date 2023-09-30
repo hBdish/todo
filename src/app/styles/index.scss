@@ -2,19 +2,22 @@
 
 * {
   font-family: var(--font-family-main);
-  background: var(--backgrond-color);
+  background: var(--background-color);
   color: var(--main-text-color);
 }
 
 :root {
-  --backgrond-color: #1D2125;
-  --backgrond-table-color: #131618;
+  --background-color: #1D2125;
+  --background-table-color: #131618;
   --backgrond-card-color: #22272B;
+  --card-color-hovered: #282E33;
   --header-text-color: #B6C2CF;
   --main-text-color: #78828B;
 
+  --main-border-radius: 0.25rem;
+
   --font-family-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-size-s: 8px;
+  --font-size-s: 14px;
   --font-line-s: 16px;
   --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
   --font-size-m: 16px;

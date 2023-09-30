@@ -1,5 +1,5 @@
 import {TasksActionTypes, TasksSyncActionTypes} from "../consts";
-import {TaskStatus, TaskType} from "./task-schema";
+import {TaskStatus, TaskType} from "../../../task-card/model/types/task-schema";
 
 interface TasksSchema {
   data?: TaskType[];

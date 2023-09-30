@@ -1,14 +1,17 @@
 import styles from "./task-card.module.scss";
 import {useDrag} from "react-dnd";
-import {TaskType} from "../../../pages/task-page/model/types/task-schema";
-import {TASK_DND_TYPE} from "../../../pages/task-page/model/consts";
+import {TaskType} from "../model/types/task-schema";
 import {CSSProperties} from "react";
+import {TASK_DND_TYPE} from "../model/consts/consts";
+import {Text} from "../../../ui/text";
 
 const TaskCard = (props: {
   task: TaskType
   style?: CSSProperties
+  onClick?: () => void
 }) => {
-  const {task, style} = props
+  const {task, style, onClick} = props
+
 
   const [{isDragging}, drag] = useDrag(() => ({
     item: {
@@ -24,7 +27,14 @@ const TaskCard = (props: {
     <div
       style={style}
       ref={drag}
-      className={styles.taskCard}>{task.title ?? ''}
+      className={styles.taskCard}
+      onClick={onClick}
+    >
+      <Text
+        title={task.title ?? ''}
+        text={`Номер задачи: ${task.number.toString()}`}
+      />
+
     </div>
   );
 };

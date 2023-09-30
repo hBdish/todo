@@ -1,12 +1,14 @@
 import {TableRow} from "../../ui/table/components";
 import {Table} from "../../ui/table";
 import {useAppDispatch, useAppSelector} from "../../shared";
-import {tasksMove} from "../../pages/task-page/model/slice/tasks-actions";
-import {TASK_DND_TYPE, TaskActionTypes, TaskSyncActionTypes} from "../../pages/task-page/model/consts";
-import {TaskType} from "../../pages/task-page/model/types/task-schema";
+import {tasksMove} from "./model/slice/tasks-actions";
+import {TaskType} from "../task-card/model/types/task-schema";
 import {useDrop} from "react-dnd";
-import {TaskCard} from "../task-card";
+import {TASK_DND_TYPE, TaskActionTypes, TaskCard, TaskSyncActionTypes} from "../task-card";
 import styles from './task-table.module.scss'
+import {Text} from "../../ui/text";
+import {EditableTaskCard} from "../editable-task-card/editable-task-card";
+import {useCallback, useState} from "react";
 
 interface TaskTableProps {
   className?: string
@@ -16,6 +18,12 @@ const TaskTable = (props: TaskTableProps) => {
   const {className} = props;
   const dispatch = useAppDispatch()
   const {allMap} = useAppSelector((state) => state.tasks);
+  const [isEditTaskModal, setIsTaskModal] = useState(false);
+  const onToggleTaskModal = useCallback(() => {
+    setIsTaskModal((prevState) => !prevState);
+  }, []);
+  const [editableTask, setEditableTask] = useState<TaskType | undefined>()
+
 
   const [collectedProps, dropQueue] = useDrop(
     () => ({
@@ -79,30 +87,71 @@ const TaskTable = (props: TaskTableProps) => {
   )
 
   return (
-    <Table columnWidths={['auto', 'auto', 'auto']}>
-      <TableRow>
-        <Table.HeaderCell>Queue</Table.HeaderCell>
-        <Table.HeaderCell>Development</Table.HeaderCell>
-        <Table.HeaderCell>Done</Table.HeaderCell>
-      </TableRow>
-      <Table.Row>
-        <Table.Cell myRef={dropQueue} className={styles.taskTableCell}>
-          {Array.from(allMap!.get("Queue")!.values())?.map(task =>
-            <TaskCard key={task.id} task={task}></TaskCard>
-          )}
-        </Table.Cell>
-        <Table.Cell myRef={dropDevelopment} className={styles.taskTableCell}>
-          {Array.from(allMap!.get("Development")!.values())?.map(task =>
-            <TaskCard key={task.id} task={task}></TaskCard>
-          )}
-        </Table.Cell>
-        <Table.Cell myRef={dropDone} className={styles.taskTableCell}>
-          {Array.from(allMap!.get("Done")!.values())?.map(task =>
-            <TaskCard key={task.id} task={task}></TaskCard>
-          )}
-        </Table.Cell>
-      </Table.Row>
-    </Table>
+    <>
+      <Table columnWidths={['auto', 'auto', 'auto']}>
+        <TableRow>
+          <Table.HeaderCell className={styles.taskTableCellHeader}>
+            <Text
+              title={"Queue"}
+              style={{background: "#9FADBC", color: "#42526E", padding: "2px"}}
+              bold
+              size={"size_s"}
+            />
+          </Table.HeaderCell>
+          <Table.HeaderCell className={styles.taskTableCellHeader}>
+            <Text
+              title={"Development"}
+              style={{background: "#85B8FF", color: "#0052CC", padding: "2px"}}
+              bold
+              size={"size_s"}
+            />
+          </Table.HeaderCell>
+          <Table.HeaderCell className={styles.taskTableCellHeader}>
+            <Text
+              title={"Done"}
+              style={{background: "#7EE2B8", color: "#006644", padding: "2px"}}
+              bold
+              size={"size_s"}
+            />
+          </Table.HeaderCell>
+        </TableRow>
+        <Table.Row>
+          <Table.Cell myRef={dropQueue} className={styles.taskTableCell}>
+            {Array.from(allMap!.get("Queue")!.values())?.map(task =>
+              <TaskCard
+                onClick={() => {
+                  setEditableTask(task)
+                  onToggleTaskModal()
+                }}
+                key={task.id}
+                task={task}></TaskCard>
+            )}
+          </Table.Cell>
+          <Table.Cell myRef={dropDevelopment} className={styles.taskTableCell}>
+            {Array.from(allMap!.get("Development")!.values())?.map(task =>
+              <TaskCard
+                onClick={() => {
+                  setEditableTask(task)
+                  onToggleTaskModal()
+                }}
+                key={task.id} task={task}></TaskCard>
+            )}
+          </Table.Cell>
+          <Table.Cell
+            myRef={dropDone} className={styles.taskTableCell}>
+            {Array.from(allMap!.get("Done")!.values())?.map(task =>
+              <TaskCard
+                onClick={() => {
+                  setEditableTask(task)
+                  onToggleTaskModal()
+                }}
+                key={task.id}
+                task={task}></TaskCard>
+            )}
+          </Table.Cell>
+        </Table.Row>
+      </Table>
+      <EditableTaskCard task={editableTask} isOpen={isEditTaskModal} onClose={onToggleTaskModal}/></>
   );
 };
 

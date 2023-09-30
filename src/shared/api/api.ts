@@ -1,5 +1,5 @@
 import {CommonHttpClient} from "./client";
-import {TaskType} from "../../pages/task-page/model/types/task-schema";
+import {TaskType} from "../../components/task-card/model/types/task-schema";
 
 const apiClient = new CommonHttpClient({
   config: {baseURL: "http://localhost:8000"},

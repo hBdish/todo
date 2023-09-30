@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {usePreview} from "react-dnd-preview";
-import {TaskType} from "../../pages/task-page/model/types/task-schema";
+import {TaskType} from "../task-card/model/types/task-schema";
 import {DndPreviewPortal} from "../../ui/portals";
 import {TaskCard} from "../task-card";
 

@@ -1,6 +1,6 @@
 import {TasksActionTypes, TasksSyncActionTypes} from "../consts";
 import {TasksAction, TasksSchema} from "../types";
-import {TaskStatus, TaskType} from "../types/task-schema";
+import {TaskStatus, TaskType} from "../../../task-card/model/types/task-schema";
 import {moveTaskHelper, sortTasks} from "../helpers/tasks-helpers";
 
 const initialState: TasksSchema = {

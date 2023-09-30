@@ -2,7 +2,7 @@ import {applyMiddleware, combineReducers, createStore} from "redux"; // createSt
 import createSagaMiddleware from "redux-saga";
 import {tasksReducer, tasksSaga} from "../../pages";
 import {projectReducer, projectSaga} from "../../components";
-import {taskReducer} from "../../pages/task-page/model/slice/task-reducer";
+import {taskReducer} from "../../components/task-card/model/slice/task-reducer";
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -1,6 +1,8 @@
 import {ProjectActionTypes, ProjectTable} from "../../components";
 import {useAppDispatch, useAppSelector} from "../../shared";
 import {useEffect} from "react";
+import styles from "./project-page.module.scss";
+
 
 function ProjectPage() {
   const {isLoading, data: projects} = useAppSelector((state) => state.projects);
@@ -15,7 +17,10 @@ function ProjectPage() {
   }
 
   return (
-    <ProjectTable projects={projects}/>
+    <div className={styles.tablePage}>
+      <ProjectTable projects={projects}/>
+    </div>
+
   );
 }
 

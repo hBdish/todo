@@ -46,7 +46,7 @@
       "timeInWork": 100,
       "dateCompleted": "12.01.2015",
       "priority": "HIGH",
-      "status": "Done"
+      "status": "Queue"
     },
     {
       "id": "4",
@@ -58,7 +58,7 @@
       "timeInWork": 100,
       "dateCompleted": "12.01.2015",
       "priority": "HIGH",
-      "status": "Development"
+      "status": "Done"
     },
     {
       "id": "5",
@@ -70,7 +70,7 @@
       "timeInWork": 100,
       "dateCompleted": "12.01.2015",
       "priority": "HIGH",
-      "status": "Queue"
+      "status": "Development"
     }
   ]
 }

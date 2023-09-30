@@ -1,5 +1,6 @@
 import {TaskAction, TaskSchema} from "../types/task-schema";
-import {TaskActionTypes, TaskSyncActionTypes} from "../consts";
+
+import {TaskActionTypes, TaskSyncActionTypes} from "../../../index";
 
 const initialState: TaskSchema = {
   task: undefined,

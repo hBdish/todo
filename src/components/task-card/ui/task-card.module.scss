@@ -1,5 +1,18 @@
 .taskCard {
-  width: 320px;
+  width: 312px;
   height: 48px;
   background: var(--backgrond-card-color);
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--card-color-hovered);
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      background: var(--card-color-hovered);
+    }
+  }
 }

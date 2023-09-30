@@ -1,4 +1,4 @@
-import {memo} from 'react';
+import {CSSProperties, memo} from 'react';
 import styles from './text.module.scss';
 import {classNames} from "../../shared";
 
@@ -15,6 +15,7 @@ interface TextProps {
   align?: TextAlign;
   size?: TextSize;
   bold?: boolean;
+  style?: CSSProperties;
 }
 
 const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
@@ -32,6 +33,7 @@ const Text = memo((props: TextProps) => {
     align = 'left',
     size = 'size_m',
     bold,
+    style,
   } = props;
 
   const HeaderTag = mapSizeToHeaderTag[size];
@@ -47,6 +49,7 @@ const Text = memo((props: TextProps) => {
     >
       {title && (
         <HeaderTag
+          style={style}
           className={styles.title}
         >
           {title ?? ''}
@@ -54,7 +57,7 @@ const Text = memo((props: TextProps) => {
       )}
       {text && (
         <p
-
+          style={style}
           className={styles.text}
         >
           {text ?? ''}

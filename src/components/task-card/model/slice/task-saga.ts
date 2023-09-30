@@ -1,10 +1,11 @@
 import {call, put, select, takeEvery} from "redux-saga/effects";
 import {requestTasksSuccess} from "./task-actions";
-import {TaskActionTypes, TasksActionTypes} from "../consts";
+import {TasksActionTypes} from "../../../task-table/model/consts";
 
 import {TasksService} from "../../../../shared";
 import {StateSchema} from "../../../../app/store";
 import {TaskType} from "../types/task-schema";
+import {TaskActionTypes} from "../../../index";
 
 function* fetchTask() {
   const id: string = yield select(

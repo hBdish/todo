@@ -1,37 +1,30 @@
 .table {
   display: grid;
-  margin: 0;
-  //height: 1000px;
+  justify-content: space-between;
+  max-width: 1000px;
 }
 
 .tableHeader {
-  margin-bottom: 24px;
+  //margin-bottom: 24px;
 }
 
 .tableHeaderCell {
   display: flex;
   align-items: center;
-  min-height: 32px;
-  padding: 16px 4px;
-  margin-left: 16px;
-  margin-top: 8px;
-  background: var(--backgrond-table-color);
+  min-height: 2pc;
 }
 
 .tableCell {
-  min-height: 32px;
-  padding: 16px 4px;
-  margin-left: 16px;
-  background: var(--backgrond-table-color);
-}
-
-.tableHeaderCell,
-.tableCell {
-  &:last-child {
-    margin-right: 16px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 3pc;
 }
 
 .tableRow {
   display: contents;
 }
+
+
+
+

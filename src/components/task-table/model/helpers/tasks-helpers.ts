@@ -1,4 +1,4 @@
-import {TaskStatus, TaskType} from "../types/task-schema";
+import {TaskStatus, TaskType} from "../../../task-card/model/types/task-schema";
 
 export const moveTaskHelper = (
   keySet: TaskStatus,
