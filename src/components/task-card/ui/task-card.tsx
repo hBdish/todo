@@ -32,7 +32,7 @@ const TaskCard = (props: {
     >
       <Text
         title={task.title ?? ''}
-        text={`Номер задачи: ${task.number.toString()}`}
+        text={`Номер задачи: ${task.number?.toString() ?? ""}`}
       />
 
     </div>

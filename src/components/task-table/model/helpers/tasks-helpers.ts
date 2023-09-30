@@ -6,14 +6,14 @@ export const moveTaskHelper = (
   map: Map<TaskStatus, Map<string, TaskType>> | undefined
 ): Map<TaskStatus, Map<string, TaskType>> | undefined => {
   map
-    ?.get(moveTask.status)
-    ?.delete(moveTask.id)
+    ?.get(moveTask?.status ?? "Done")
+    ?.delete(moveTask?.id ?? "")
 
   moveTask.status = keySet
 
   map
     ?.get(keySet)
-    ?.set(moveTask.id, moveTask)
+    ?.set(moveTask.id ?? "", moveTask)
   return map
 }
 
@@ -27,13 +27,13 @@ export const sortTasks = (
   allTasksArray.map(task => {
     switch (task.status) {
       case "Development":
-        developmentMap.set(task.id, task)
+        developmentMap.set(task.id ?? "", task)
         break;
       case "Done":
-        doneMap.set(task.id, task)
+        doneMap.set(task?.id ?? "", task)
         break;
       case "Queue":
-        queueMap.set(task.id, task)
+        queueMap.set(task.id ?? "", task)
         break;
     }
   })

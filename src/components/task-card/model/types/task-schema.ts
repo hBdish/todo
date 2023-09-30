@@ -3,16 +3,16 @@ import {TaskActionTypes, TaskSyncActionTypes} from "../../../index";
 export type TaskStatus = "Queue" | "Development" | "Done"
 
 interface TaskType {
-  id: string;
-  projectId: number;
-  number: number;
-  title: string;
-  description: string;
-  dateCreated: string;
-  timeInWork: number;
-  dateCompleted: string;
-  priority: string;
-  status: TaskStatus;
+  id?: string;
+  projectId?: number;
+  number?: number;
+  title?: string;
+  description?: string;
+  dateCreated?: string;
+  timeInWork?: number;
+  dateCompleted?: string;
+  priority?: string;
+  status?: TaskStatus;
 }
 
 interface TaskSchema {
