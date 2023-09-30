@@ -19,9 +19,11 @@ interface TableCellProps extends TableCommonProps {
 }
 
 type TableHeaderCellProps = TableCommonProps
+type StyleType = "style_projects" | "style_tasks"
 
 interface TableProps extends TableCommonProps {
   columnWidths: string[]
+  customStyle?: StyleType
 }
 
 interface TableSubcomponents {

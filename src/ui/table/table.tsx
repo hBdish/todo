@@ -5,11 +5,11 @@ import {TableProps, TableSubcomponents} from "./types";
 import {TableCell, TableHeader, TableHeaderCell, TableRow} from "./components";
 
 const Table: FC<TableProps> & TableSubcomponents = (props: TableProps) => {
-  const {className, columnWidths, children} = props;
+  const {className, columnWidths, children, customStyle = "style_tasks"} = props;
   const style: CSSProperties = {gridTemplateColumns: columnWidths.join(' ')}
 
   return (
-    <div className={classNames(styles.table, {}, [className])} style={style}>
+    <div className={classNames(styles.table, {}, [className, styles[customStyle]])} style={style}>
       {children}
     </div>
   );

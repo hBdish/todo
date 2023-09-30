@@ -20,7 +20,8 @@ const ProjectTable = (props: ProjectTableProps) => {
   }
 
   return (
-    <Table className={classNames(style.table, {}, [className])} columnWidths={['auto', 'auto', '36px']}>
+    <Table customStyle={"style_projects"} className={classNames(style.table, {}, [className])}
+           columnWidths={['auto', 'auto', '36px']}>
       <Table.Row className={style.tableRowHead}>
         <Table.HeaderCell className={style.tableCellHead}><Text title={"Имя"}/></Table.HeaderCell>
         <Table.HeaderCell className={style.tableCellHead}><Text title={"Тип"}/></Table.HeaderCell>
