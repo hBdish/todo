@@ -33,9 +33,23 @@ function* editTask() {
   }
 }
 
+function* createTask() {
+  const newTask: TaskType = yield select(
+    (state: StateSchema) => state.task.editableTask
+  );
+
+  try {
+    yield call(TasksService.createTask, newTask);
+
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 function* tasksSaga() {
   yield takeEvery(TasksActionTypes.FETCH_TASKS, fetchTask);
   yield takeEvery(TaskActionTypes.PATCH_TASK, editTask);
+  yield takeEvery(TaskActionTypes.CREATE_TASK, createTask);
 }
 
 export {tasksSaga};

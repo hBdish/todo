@@ -13,3 +13,7 @@ export const setEditableTask = (data: TaskType) => {
 export const patchTask = (data: TaskType) => {
   return {type: TaskActionTypes.PATCH_TASK, payload: data};
 };
+
+export const createTask = (data: TaskType) => {
+  return {type: TaskActionTypes.CREATE_TASK, payload: data};
+};

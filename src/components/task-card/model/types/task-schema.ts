@@ -4,8 +4,8 @@ export type TaskStatus = "Queue" | "Development" | "Done"
 
 interface TaskType {
   id?: string;
-  projectId?: number;
-  number?: number;
+  projectId?: string;
+  number?: string;
   title?: string;
   description?: string;
   dateCreated?: string;
@@ -24,6 +24,10 @@ interface TaskActionPatch {
   type: TaskActionTypes.PATCH_TASK;
 }
 
+interface TaskActionCreate {
+  type: TaskActionTypes.CREATE_TASK;
+}
+
 interface TaskActionSetTask {
   type: TaskSyncActionTypes.SET_TASK;
   payload: TaskType;
@@ -36,6 +40,6 @@ interface TaskActionEditTask {
 
 type TaskActionSync = TaskActionSetTask | TaskActionEditTask
 
-type TaskAction = TaskActionSync | TaskActionPatch
+type TaskAction = TaskActionSync | TaskActionPatch | TaskActionCreate
 
 export type {TaskSchema, TaskType, TaskAction};

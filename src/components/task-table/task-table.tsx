@@ -9,6 +9,9 @@ import styles from './task-table.module.scss'
 import {Text} from "../../ui/text";
 import {EditableTaskCard} from "../editable-task-card/editable-task-card";
 import {useCallback, useState} from "react";
+import {Button} from "../../ui/button";
+import {Input} from "../../ui/input";
+import {createTask, setEditableTask as setEditableTaskAction} from "../task-card/model/slice/task-actions";
 
 interface TaskTableProps {
   className?: string
@@ -18,11 +21,26 @@ const TaskTable = (props: TaskTableProps) => {
   const {className} = props;
   const dispatch = useAppDispatch()
   const {allMap} = useAppSelector((state) => state.tasks);
+  const {selectedProjectId} = useAppSelector((state) => state.projects);
   const [isEditTaskModal, setIsTaskModal] = useState(false);
   const onToggleTaskModal = useCallback(() => {
     setIsTaskModal((prevState) => !prevState);
   }, []);
   const [editableTask, setEditableTask] = useState<TaskType | undefined>()
+  const [isCreate, setIsCreate] = useState(false)
+  const [creatableTask, setCreatableTask] = useState<TaskType>(
+    {
+      title: "",
+      description: '',
+      status: "Queue",
+      dateCreated: '2002-02-07',
+      dateCompleted: '2002-02-07',
+      priority: '',
+      projectId: selectedProjectId,
+      timeInWork: 123,
+      number: Math.random().toString(),
+    }
+  )
 
 
   const [collectedProps, dropQueue] = useDrop(
@@ -86,6 +104,46 @@ const TaskTable = (props: TaskTableProps) => {
     []
   )
 
+  const renderTaskCard = (task: TaskType) => (
+    <TaskCard
+      className={styles.taskCard}
+      onClick={() => {
+        setEditableTask(task)
+        onToggleTaskModal()
+      }}
+      key={task.id} task={task}
+    />
+  )
+
+  const renderButton = (isCreate: boolean) => {
+    if (isCreate) {
+      return (
+        <div>
+          <Input
+            onBlur={() => {
+              if (Boolean(creatableTask.title)) {
+                dispatch(setEditableTaskAction(creatableTask))
+                dispatch(createTask(creatableTask))
+              }
+              setIsCreate(false)
+            }
+            }
+            autoFocus
+            value={creatableTask.title}
+            onChange={(value) => setCreatableTask(prevState => {
+              return {
+                ...prevState,
+                title: value
+              }
+            })}
+          />
+
+        </div>)
+    }
+
+    return <Button onClick={() => setIsCreate(true)} marginTop={"8px"}>Добавить</Button>
+  }
+
   return (
     <>
       <Table columnWidths={['auto', 'auto', 'auto']}>
@@ -118,35 +176,19 @@ const TaskTable = (props: TaskTableProps) => {
         <Table.Row>
           <Table.Cell myRef={dropQueue} className={styles.taskTableCell}>
             {Array.from(allMap!.get("Queue")!.values())?.map(task =>
-              <TaskCard
-                onClick={() => {
-                  setEditableTask(task)
-                  onToggleTaskModal()
-                }}
-                key={task.id}
-                task={task}></TaskCard>
+              renderTaskCard(task)
             )}
+            {renderButton(isCreate)}
           </Table.Cell>
           <Table.Cell myRef={dropDevelopment} className={styles.taskTableCell}>
             {Array.from(allMap!.get("Development")!.values())?.map(task =>
-              <TaskCard
-                onClick={() => {
-                  setEditableTask(task)
-                  onToggleTaskModal()
-                }}
-                key={task.id} task={task}></TaskCard>
+              renderTaskCard(task)
             )}
           </Table.Cell>
           <Table.Cell
             myRef={dropDone} className={styles.taskTableCell}>
             {Array.from(allMap!.get("Done")!.values())?.map(task =>
-              <TaskCard
-                onClick={() => {
-                  setEditableTask(task)
-                  onToggleTaskModal()
-                }}
-                key={task.id}
-                task={task}></TaskCard>
+              renderTaskCard(task)
             )}
           </Table.Cell>
         </Table.Row>

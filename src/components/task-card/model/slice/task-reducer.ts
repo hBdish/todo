@@ -14,6 +14,8 @@ export const taskReducer = (
   switch (action.type) {
     case TaskActionTypes.PATCH_TASK:
       return state;
+    case TaskActionTypes.CREATE_TASK:
+      return state;
     case TaskSyncActionTypes.SET_TASK:
       return {task: action.payload, editableTask: action.payload};
     case TaskSyncActionTypes.SET_EDITABLE_TASK:

@@ -21,6 +21,29 @@ class TasksService {
       },
     });
   }
+
+  static createTask(newTask: TaskType) {
+    let task: TaskType
+
+    if (!newTask || newTask.projectId) {
+      task = {
+        title: "",
+        description: '',
+        status: "Queue",
+        dateCreated: '2002-02-07',
+        dateCompleted: '2002-02-07',
+        priority: '',
+        projectId: newTask.projectId,
+        timeInWork: 123,
+        number: Math.random().toString(),
+      }
+    } else {
+      task = newTask
+    }
+
+    console.log(task)
+    return apiClient.post<TaskType>(`/tasks`, task);
+  }
 }
 
 class ProjectsService {

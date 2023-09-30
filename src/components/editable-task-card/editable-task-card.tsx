@@ -43,10 +43,9 @@ const EditableTaskCard = (props: EditableTaskCardProps) => {
     >
       <div className={styles.modal}>
         <div className={styles.leftContent}>
-          {/*TODO переписать на строковое значение*/}
           <Input
             value={editTask?.number}
-            onChange={(value) => updateTaskData({number: +value})}
+            onChange={(value) => updateTaskData({number: value})}
             onBlur={() => {
               patchTaskData(editTask as TaskType)
             }}
@@ -86,9 +85,7 @@ const EditableTaskCard = (props: EditableTaskCardProps) => {
           <Table.Cell>
             <Input label={'Дата завершения'} value={editTask?.dateCompleted}/>
           </Table.Cell>
-
         </Table>
-
       </div>
     </Modal>
   );
