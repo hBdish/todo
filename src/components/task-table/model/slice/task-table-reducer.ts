@@ -79,7 +79,7 @@ export const taskTableReducer = (
         newMapWithoutDeletedElement
       )
 
-      return {allMap: maps, data: state.data};
+      return {allMap: maps, data: newMapWithoutDeletedElement};
     }
     default: {
       return state;

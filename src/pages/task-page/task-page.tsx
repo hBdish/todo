@@ -6,6 +6,7 @@ import {TaskTableActionTypes} from "../../components/task-table/model/consts";
 import {DndProvider} from "react-dnd-multi-backend";
 import {HTML5toTouch} from "rdndmb-html5-to-touch";
 import {PreviewTask} from "../../components/task-table/components/task-card-preview/preview-task";
+import {SearchFilter} from "../../components/search-filter";
 
 function TaskPage() {
   const {isLoading} = useAppSelector((state) => state.tasks);
@@ -25,10 +26,14 @@ function TaskPage() {
   }
 
   return (
-    <DndProvider options={HTML5toTouch}>
-      <PreviewTask/>
-      <TaskTable/>
-    </DndProvider>
+    <>
+      <SearchFilter/>
+      <DndProvider options={HTML5toTouch}>
+        <PreviewTask/>
+        <TaskTable/>
+      </DndProvider>
+    </>
+
   );
 }
 

@@ -23,12 +23,12 @@ const CreateButton = (props: CreateButtonProps) => {
       title: "",
       description: '',
       status: "Queue",
-      dateCreated: '2002-02-07',
-      dateCompleted: '2002-02-07',
+      dateCreated: new Date(Date.now()).toLocaleDateString().split('.').reverse().join('-'),
+      dateCompleted: '',
       priority: '',
       projectId: selectedProjectId,
-      timeInWork: 123,
-      number: '',
+      timeInWork: -1,
+      number: `${Math.round(Math.random() * 100)}${new Date().getSeconds()}`,
     }
   )
 

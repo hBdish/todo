@@ -3,6 +3,7 @@ import createSagaMiddleware from "redux-saga";
 import {tasksSaga, taskTableReducer} from "../../pages";
 import {projectReducer, projectSaga} from "../../components";
 import {taskReducer} from "../../components/task-card/model/slice/task-reducer";
+import {searchReducer} from "../../components/search-filter/model/slice";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -11,6 +12,7 @@ export const store = createStore(
     projects: projectReducer,
     tasks: taskTableReducer,
     task: taskReducer,
+    search: searchReducer,
   }),
   applyMiddleware(sagaMiddleware)
 );

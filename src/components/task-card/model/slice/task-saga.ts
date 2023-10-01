@@ -12,8 +12,12 @@ function* fetchTask() {
     (state: StateSchema) => state.projects.selectedProjectId
   );
 
+  const search: string = yield select(
+    (state: StateSchema) => state.search.search
+  );
+
   try {
-    const task: TaskType[] = yield call(TasksService.fetchAllTasks, id);
+    const task: TaskType[] = yield call(TasksService.fetchAllTasks, {projectId: id, search: search});
     yield put(requestTasksSuccess(task));
   } catch (e) {
     yield put({type: TaskTableActionTypes.FETCH_TASKS_ERROR, error: e});
@@ -37,13 +41,13 @@ function* createTask() {
   const newTask: TaskType = yield select(
     (state: StateSchema) => state.task.editableTask
   );
-
+  const date = new Date(Date.now()).toLocaleDateString().split('.').reverse().join('-')
   try {
     const task: TaskType = yield call(TasksService.createTask, newTask);
     yield put({
       type: TaskTableActionTypes.PUSH_NEW_TASK, payload: {
         ...task,
-        number: `${task.projectId}-${task.id}`
+        date
       }
     })
   } catch (e) {

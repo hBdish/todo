@@ -83,6 +83,8 @@ const Input = memo((props: InputProps) => {
         placeholder={placeholder}
         {...otherProps}
       />
+      <span
+        role="textbox"></span>
       <div className={styles.addonRight}>{addonRight}</div>
     </div>
   );
@@ -91,7 +93,6 @@ const Input = memo((props: InputProps) => {
     return (
       <Vstack
         w100
-        gap="8"
       >
         <Text title={label}/>
         {input}

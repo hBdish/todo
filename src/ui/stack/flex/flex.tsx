@@ -6,7 +6,7 @@ import {classNames, Mods} from "../../../shared";
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
 export type FlexAlign = 'start' | 'center' | 'end';
 export type FlexDirection = 'row' | 'column';
-export type FlexGap = '8' | '16' | '24' | '32' | '40';
+export type FlexGap = '4' | '8' | '16' | '24' | '32' | '40';
 
 type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
@@ -51,6 +51,7 @@ const Flex = (props: FlexProps) => {
   };
 
   const gapClasses: Record<FlexGap, string> = {
+    4: styles.gap4,
     8: styles.gap8,
     16: styles.gap16,
     24: styles.gap24,

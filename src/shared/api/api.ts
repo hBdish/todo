@@ -7,10 +7,10 @@ const apiClient = new CommonHttpClient({
 });
 
 class TasksService {
-  static fetchAllTasks(projectId: string) {
-    return apiClient.get<TaskType[]>("/tasks", {
+  static fetchAllTasks(data: { projectId: string, search: string }) {
+    return apiClient.get<TaskType[]>(`/tasks?q=${data.search}`, {
       params: {
-        projectId,
+        projectId: data.projectId,
       },
     });
   }
@@ -24,29 +24,11 @@ class TasksService {
   }
 
   static createTask(newTask: TaskType) {
-    let task: TaskType
 
-    if (!newTask || newTask.projectId) {
-      task = {
-        title: newTask.title,
-        description: '',
-        status: "Queue",
-        dateCreated: '2002-02-07',
-        dateCompleted: '2002-02-07',
-        priority: '',
-        projectId: newTask.projectId,
-        timeInWork: 123,
-        number: '',
-      }
-    } else {
-      task = newTask
-    }
-
-    return apiClient.post<TaskType>(`/tasks`, task);
+    return apiClient.post<TaskType>(`/tasks`, newTask);
   }
 
   static deleteTaskById(taskId: string) {
-    console.log(taskId)
     return apiClient.delete<object>(`/tasks/${taskId}`);
   }
 }
