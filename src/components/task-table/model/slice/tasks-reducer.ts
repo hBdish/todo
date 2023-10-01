@@ -51,6 +51,19 @@ export const tasksReducer = (
       };
     case TasksActionTypes.FETCH_TASKS_ERROR:
       return {isLoading: false, error: action.payload};
+    case TasksActionTypes.PUSH_NEW_TASK:
+      if (!state.data) return state
+      const newArray = state.data
+      newArray.push(action.payload)
+      const newMap = sortTasks(
+        new Map<TaskStatus, Map<string, TaskType>>(),
+        new Map<string, TaskType>(),
+        new Map<string, TaskType>(),
+        new Map<string, TaskType>(),
+        newArray
+      )
+      return {allMap: newMap, data: state.data};
+
     default:
       return state;
   }

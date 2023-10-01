@@ -22,6 +22,11 @@ interface TasksActionFetch {
   type: TasksActionTypes.FETCH_TASKS;
 }
 
+interface TasksActionPush {
+  type: TasksActionTypes.PUSH_NEW_TASK;
+  payload: TaskType;
+}
+
 interface TasksActionSuccess {
   type: TasksActionTypes.FETCH_TASKS_SUCCESS;
   payload: TaskType[];
@@ -32,7 +37,7 @@ interface TasksActionError {
   payload: string;
 }
 
-type TasksAsyncAction = TasksActionFetch | TasksActionSuccess | TasksActionError;
+type TasksAsyncAction = TasksActionFetch | TasksActionSuccess | TasksActionError | TasksActionPush
 type TasksAction = TasksAsyncAction | TasksActionMove
 
 export type {TasksSchema, TasksAction};

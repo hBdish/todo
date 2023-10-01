@@ -38,6 +38,7 @@ interface TaskActionEditTask {
   payload: TaskType;
 }
 
+
 type TaskActionSync = TaskActionSetTask | TaskActionEditTask
 
 type TaskAction = TaskActionSync | TaskActionPatch | TaskActionCreate

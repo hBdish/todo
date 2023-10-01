@@ -28,7 +28,7 @@ class TasksService {
 
     if (!newTask || newTask.projectId) {
       task = {
-        title: "",
+        title: newTask.title,
         description: '',
         status: "Queue",
         dateCreated: '2002-02-07',
@@ -36,7 +36,7 @@ class TasksService {
         priority: '',
         projectId: newTask.projectId,
         timeInWork: 123,
-        number: Math.random().toString(),
+        number: '',
       }
     } else {
       task = newTask
