@@ -28,6 +28,10 @@ interface TaskActionCreate {
   type: TaskActionTypes.CREATE_TASK;
 }
 
+interface TaskActionDelete {
+  type: TaskActionTypes.DELETE_TASK;
+}
+
 interface TaskActionSetTask {
   type: TaskSyncActionTypes.SET_TASK;
   payload: TaskType;
@@ -41,6 +45,6 @@ interface TaskActionEditTask {
 
 type TaskActionSync = TaskActionSetTask | TaskActionEditTask
 
-type TaskAction = TaskActionSync | TaskActionPatch | TaskActionCreate
+type TaskAction = TaskActionSync | TaskActionPatch | TaskActionCreate | TaskActionDelete
 
 export type {TaskSchema, TaskType, TaskAction};

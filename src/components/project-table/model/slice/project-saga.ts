@@ -20,7 +20,6 @@ function* deleteProjects() {
     (state: StateSchema) => state.projects.selectedProjectId
   );
 
-  console.log(projectId)
 
   try {
     yield call(ProjectsService.deleteProjectById, projectId);

@@ -2,13 +2,14 @@
   display: flex;
 }
 
-.navbarContent {
+.popoverContent {
   position: absolute;
+  clear: left;
   z-index: 10;
   width: 160px;
   padding: 4px;
   margin-top: 36px;
-  right: 40px;
+  margin-right: 40px;
   background-color: var(--card-color-hovered);
   border-radius: var(--main-border-radius);
   display: flex;
@@ -20,6 +21,7 @@
 }
 
 .active {
+
   background: var(--button-backgrond-hovered);
 }
 

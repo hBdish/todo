@@ -63,6 +63,19 @@ export const tasksReducer = (
         newArray
       )
       return {allMap: newMap, data: state.data};
+    case TasksActionTypes.DELETE_SYNC_TASK:
+      if (!state.data) return state
+      const newMapWithoutDeletedElement = state.data.filter(el => el.id !== action.payload)
+      
+      const maps = sortTasks(
+        new Map<TaskStatus, Map<string, TaskType>>(),
+        new Map<string, TaskType>(),
+        new Map<string, TaskType>(),
+        new Map<string, TaskType>(),
+        newMapWithoutDeletedElement
+      )
+
+      return {allMap: maps, data: state.data};
 
     default:
       return state;

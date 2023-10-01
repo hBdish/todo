@@ -1,23 +1,28 @@
 import styles from './popover.module.scss';
 import {classNames, MoreIcon, useOutsideEvent} from "../../shared";
-import React, {ReactNode, useRef, useState} from "react";
+import React, {CSSProperties, ReactNode, useRef, useState} from "react";
 import {Button} from "../button";
 import {AppImage} from "../app-image";
 
 interface PopoverProps {
   className?: string
   children?: ReactNode
+  positionRight?: boolean
 }
 
 const Popover = (props: PopoverProps) => {
-  const {className, children} = props;
+  const {className, children, positionRight = false} = props;
   const [opened, setOpened] = useState(false);
   const popupRef = useRef<HTMLDivElement | null>(null);
+  let contentInLineStyle: CSSProperties = {}
+
+  if (positionRight) contentInLineStyle = {right: '0px'}
 
   useOutsideEvent({
     ref: popupRef,
     onOutside: () => setOpened(false),
   });
+
 
   return (
     <div className={classNames(styles.popup, {}, [className])}>
@@ -34,7 +39,10 @@ const Popover = (props: PopoverProps) => {
         />
       </Button>
       {opened && (
-        <div onClick={(e) => e.stopPropagation()} ref={popupRef} className={styles.navbarContent}>
+        <div
+          style={contentInLineStyle}
+          onClick={(e) => e.stopPropagation()} ref={popupRef}
+          className={styles.popoverContent}>
           {children}
         </div>
       )}

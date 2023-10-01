@@ -73,7 +73,7 @@ const ProjectTable = (props: ProjectTableProps) => {
               />
             </Table.Cell>
             <Table.Cell className={style.tableCellBody}>
-              <Popover>
+              <Popover positionRight>
                 <Button onClick={(event) => {
                   dispatch(setSelectedProjectId(project.id ?? ''))
                   dispatch({type: ProjectActionTypes.DELETE_PROJECT})

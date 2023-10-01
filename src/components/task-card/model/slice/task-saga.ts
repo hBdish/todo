@@ -51,10 +51,24 @@ function* createTask() {
   }
 }
 
+function* deleteTask() {
+  const taskId: string = yield select(
+    (state: StateSchema) => state.task.editableTask?.id ?? ''
+  );
+
+  try {
+    yield call(TasksService.deleteTaskById, taskId);
+    yield put({type: TasksActionTypes.DELETE_SYNC_TASK, payload: taskId})
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 function* tasksSaga() {
   yield takeEvery(TasksActionTypes.FETCH_TASKS, fetchTask);
   yield takeEvery(TaskActionTypes.PATCH_TASK, editTask);
   yield takeEvery(TaskActionTypes.CREATE_TASK, createTask);
+  yield takeEvery(TaskActionTypes.DELETE_TASK, deleteTask);
 }
 
 export {tasksSaga};

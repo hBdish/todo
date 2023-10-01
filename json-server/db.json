@@ -39,7 +39,7 @@
       "timeInWork": 100,
       "dateCompleted": "08.01.2015",
       "priority": "HIGH",
-      "status": "Development"
+      "status": "Done"
     },
     {
       "id": "3",
@@ -112,6 +112,18 @@
       "timeInWork": 123,
       "number": "2-9ZUD77g",
       "id": "9ZUD77g"
+    },
+    {
+      "title": "test",
+      "description": "",
+      "status": "Queue",
+      "dateCreated": "2002-02-07",
+      "dateCompleted": "2002-02-07",
+      "priority": "",
+      "projectId": "tCkqYh3",
+      "timeInWork": 123,
+      "number": "",
+      "id": "WCXetcD"
     }
   ]
 }

@@ -27,6 +27,11 @@ interface TasksActionPush {
   payload: TaskType;
 }
 
+interface TasksActionDelete {
+  type: TasksActionTypes.DELETE_SYNC_TASK;
+  payload: string;
+}
+
 interface TasksActionSuccess {
   type: TasksActionTypes.FETCH_TASKS_SUCCESS;
   payload: TaskType[];
@@ -37,7 +42,7 @@ interface TasksActionError {
   payload: string;
 }
 
-type TasksAsyncAction = TasksActionFetch | TasksActionSuccess | TasksActionError | TasksActionPush
+type TasksAsyncAction = TasksActionFetch | TasksActionSuccess | TasksActionError | TasksActionPush | TasksActionDelete
 type TasksAction = TasksAsyncAction | TasksActionMove
 
 export type {TasksSchema, TasksAction};

@@ -38,7 +38,7 @@ const TaskTable = (props: TaskTableProps) => {
       priority: '',
       projectId: selectedProjectId,
       timeInWork: 123,
-      number: Math.random().toString(),
+      number: '',
     }
   )
 
@@ -125,6 +125,12 @@ const TaskTable = (props: TaskTableProps) => {
               if (Boolean(creatableTask.title)) {
                 dispatch(setEditableTaskAction(creatableTask))
                 dispatch(createTask(creatableTask))
+                setCreatableTask(prevState => {
+                  return {
+                    ...prevState,
+                    title: ''
+                  }
+                })
               }
               setIsCreate(false)
             }

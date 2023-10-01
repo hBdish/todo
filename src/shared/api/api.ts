@@ -3,7 +3,7 @@ import {TaskType} from "../../components/task-card/model/types/task-schema";
 import {ProjectType} from "../../components/project-table/model/types/types";
 
 const apiClient = new CommonHttpClient({
-  config: {baseURL: "http://localhost:8000"},
+  config: {baseURL: "https://todoback-0ei2krkw.b4a.run"}, // TODO ВЫНЕСТИ
 });
 
 class TasksService {
@@ -43,6 +43,11 @@ class TasksService {
     }
 
     return apiClient.post<TaskType>(`/tasks`, task);
+  }
+
+  static deleteTaskById(taskId: string) {
+    console.log(taskId)
+    return apiClient.delete<object>(`/tasks/${taskId}`);
   }
 }
 

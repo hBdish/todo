@@ -1,8 +1,10 @@
 .taskCard {
+  display: flex;
   width: 312px;
   height: 48px;
   background: var(--backgrond-card-color);
   cursor: pointer;
+
 
   @media (hover: hover) {
     &:hover {
@@ -16,3 +18,4 @@
     }
   }
 }
+
