@@ -37,7 +37,7 @@ const CreateButton = (props: CreateButtonProps) => {
       <div>
         <Input
           onBlur={() => {
-            if (Boolean(creatableTask.title)) {
+            if (creatableTask.title) {
               dispatch(setEditableTaskAction(creatableTask))
               dispatch(createTask(creatableTask))
               setCreatableTask(prevState => {

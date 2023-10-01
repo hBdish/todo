@@ -21,7 +21,7 @@ export const taskTableReducer = (
   action: TasksAction
 ): TasksSchema => {
   switch (action.type) {
-    case TaskTableSyncActionTypes.MOVE_TASK:
+    case TaskTableSyncActionTypes.MOVE_TASK: {
       const map =
         moveTaskHelper(
           action.payload.keySet,
@@ -32,10 +32,11 @@ export const taskTableReducer = (
       return {
         allMap: map
       };
-    case TaskTableActionTypes.FETCH_TASKS:
+    }
+    case TaskTableActionTypes.FETCH_TASKS: {
       return {isLoading: true, data: []};
-    case TaskTableActionTypes.FETCH_TASKS_SUCCESS:
-
+    }
+    case TaskTableActionTypes.FETCH_TASKS_SUCCESS: {
       const allMap = sortTasks(
         new Map<TaskStatus, Map<string, TaskType>>(),
         new Map<string, TaskType>(),
@@ -49,9 +50,11 @@ export const taskTableReducer = (
         data: action.payload,
         allMap
       };
-    case TaskTableActionTypes.FETCH_TASKS_ERROR:
+    }
+    case TaskTableActionTypes.FETCH_TASKS_ERROR: {
       return {isLoading: false, error: action.payload};
-    case TaskTableActionTypes.PUSH_NEW_TASK:
+    }
+    case TaskTableActionTypes.PUSH_NEW_TASK: {
       if (!state.data) return state
       const newArray = state.data
       newArray.push(action.payload)
@@ -63,7 +66,8 @@ export const taskTableReducer = (
         newArray
       )
       return {allMap: newMap, data: state.data};
-    case TaskTableActionTypes.DELETE_SYNC_TASK:
+    }
+    case TaskTableActionTypes.DELETE_SYNC_TASK: {
       if (!state.data) return state
       const newMapWithoutDeletedElement = state.data.filter(el => el.id !== action.payload)
 
@@ -76,8 +80,9 @@ export const taskTableReducer = (
       )
 
       return {allMap: maps, data: state.data};
-
-    default:
+    }
+    default: {
       return state;
+    }
   }
 };

@@ -13,26 +13,34 @@ export const projectReducer = (
   action: ProjectAction
 ): ProjectSchema => {
   switch (action.type) {
-    case ProjectSyncActionTypes.SET_SELECTED_PROJECT_ID:
+    case ProjectSyncActionTypes.SET_SELECTED_PROJECT_ID: {
       return {selectedProjectId: action.payload, data: state.data, isLoading: false};
-    case ProjectActionTypes.CREATE_NEW_PROJECT:
+    }
+    case ProjectActionTypes.CREATE_NEW_PROJECT: {
       const newData = state.data
       if (!newData) return {data: state.data}
       newData.push(action.payload)
       return {data: newData, isLoading: false};
-    case ProjectActionTypes.PATCH_PROJECT:
+    }
+    case ProjectActionTypes.PATCH_PROJECT: {
       return {data: state.data, isLoading: false};
-    case ProjectActionTypes.DELETE_PROJECT:
+    }
+    case ProjectActionTypes.DELETE_PROJECT: {
       const allProject = state
         .data?.filter(el => el.id !== state.selectedProjectId)
       return {data: allProject, selectedProjectId: state.selectedProjectId};
-    case ProjectActionTypes.FETCH_PROJECTS:
+    }
+    case ProjectActionTypes.FETCH_PROJECTS: {
       return {isLoading: true, data: []};
-    case ProjectActionTypes.FETCH_PROJECTS_SUCCESS:
+    }
+    case ProjectActionTypes.FETCH_PROJECTS_SUCCESS: {
       return {isLoading: false, data: action.payload};
-    case ProjectActionTypes.FETCH_PROJECTS_ERROR:
+    }
+    case ProjectActionTypes.FETCH_PROJECTS_ERROR: {
       return {isLoading: false, error: action.payload};
-    default:
+    }
+    default: {
       return state;
+    }
   }
 };

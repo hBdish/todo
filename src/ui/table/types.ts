@@ -15,8 +15,8 @@ interface TableRowProps extends TableCommonProps {
 
 type TableHeaderProps = TableCommonProps
 
-interface TableCellProps extends TableCommonProps {
-}
+type TableCellProps = TableCommonProps
+
 
 type TableHeaderCellProps = TableCommonProps
 type StyleType = "style_projects" | "style_tasks"
