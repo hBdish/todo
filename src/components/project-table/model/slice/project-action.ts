@@ -10,3 +10,7 @@ export const requestProjectsSuccess = (data: ProjectType[]) => {
 };
 
 
+export const deleteProject = () => {
+  return {type: ProjectActionTypes.DELETE_PROJECT};
+};
+

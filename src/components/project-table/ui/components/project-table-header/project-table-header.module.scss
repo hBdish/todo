@@ -1,0 +1,11 @@
+.tableRowHead {
+  & .tableCellHead {
+
+    border-bottom: 2px solid var(--card-color-hovered);
+  }
+}
+
+.addButton {
+  position: absolute;
+  right: 40px;
+}

@@ -32,8 +32,6 @@ function* createProjects() {
 
   const newProject: ProjectType = JSON.parse(sessionStorage.getItem(SESSION_KEY_PROJECT) ?? '')
 
-  console.log(newProject)
-
   try {
     const project: ProjectType = yield call(ProjectsService.createProject, newProject);
     yield put({type: ProjectActionTypes.CREATE_NEW_PROJECT, payload: project});

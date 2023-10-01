@@ -59,6 +59,7 @@ type ProjectAsyncAction =
   | ProjectActionPatch
   | TriggerProjectActionCreate
 
+
 type ProjectAction = ProjectSyncAction | ProjectAsyncAction
 
 export type {ProjectSchema, ProjectAction, ProjectType};

@@ -1,0 +1,28 @@
+
+.tableRowBody {
+  cursor: pointer;
+
+  &:last-child .tableCellBody {
+    border-bottom: 2px solid var(--card-color-hovered);
+  }
+
+
+  @media (hover: hover) {
+    &:hover .tableCellBody {
+      background: var(--card-color-hovered);
+    }
+  }
+
+  @media (hover: none) {
+    &:active .tableCellBody {
+      background: var(--card-color-hovered);
+    }
+  }
+}
+
+.addButton {
+  position: absolute;
+  right: 40px;
+}
+
+
