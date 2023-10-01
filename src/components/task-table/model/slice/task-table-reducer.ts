@@ -1,4 +1,4 @@
-import {TasksActionTypes, TasksSyncActionTypes} from "../consts";
+import {TaskTableActionTypes, TaskTableSyncActionTypes} from "../consts";
 import {TasksAction, TasksSchema} from "../types";
 import {TaskStatus, TaskType} from "../../../task-card/model/types/task-schema";
 import {moveTaskHelper, sortTasks} from "../helpers/tasks-helpers";
@@ -16,12 +16,12 @@ const initialState: TasksSchema = {
 };
 
 
-export const tasksReducer = (
+export const taskTableReducer = (
   state = initialState,
   action: TasksAction
 ): TasksSchema => {
   switch (action.type) {
-    case TasksSyncActionTypes.MOVE_TASK:
+    case TaskTableSyncActionTypes.MOVE_TASK:
       const map =
         moveTaskHelper(
           action.payload.keySet,
@@ -32,9 +32,9 @@ export const tasksReducer = (
       return {
         allMap: map
       };
-    case TasksActionTypes.FETCH_TASKS:
+    case TaskTableActionTypes.FETCH_TASKS:
       return {isLoading: true, data: []};
-    case TasksActionTypes.FETCH_TASKS_SUCCESS:
+    case TaskTableActionTypes.FETCH_TASKS_SUCCESS:
 
       const allMap = sortTasks(
         new Map<TaskStatus, Map<string, TaskType>>(),
@@ -49,9 +49,9 @@ export const tasksReducer = (
         data: action.payload,
         allMap
       };
-    case TasksActionTypes.FETCH_TASKS_ERROR:
+    case TaskTableActionTypes.FETCH_TASKS_ERROR:
       return {isLoading: false, error: action.payload};
-    case TasksActionTypes.PUSH_NEW_TASK:
+    case TaskTableActionTypes.PUSH_NEW_TASK:
       if (!state.data) return state
       const newArray = state.data
       newArray.push(action.payload)
@@ -63,10 +63,10 @@ export const tasksReducer = (
         newArray
       )
       return {allMap: newMap, data: state.data};
-    case TasksActionTypes.DELETE_SYNC_TASK:
+    case TaskTableActionTypes.DELETE_SYNC_TASK:
       if (!state.data) return state
       const newMapWithoutDeletedElement = state.data.filter(el => el.id !== action.payload)
-      
+
       const maps = sortTasks(
         new Map<TaskStatus, Map<string, TaskType>>(),
         new Map<string, TaskType>(),

@@ -1,6 +1,6 @@
 import {call, put, select, takeEvery} from "redux-saga/effects";
 import {requestTasksSuccess} from "./task-actions";
-import {TasksActionTypes} from "../../../task-table/model/consts";
+import {TaskTableActionTypes} from "../../../task-table/model/consts";
 
 import {TasksService} from "../../../../shared";
 import {StateSchema} from "../../../../app/store";
@@ -16,7 +16,7 @@ function* fetchTask() {
     const task: TaskType[] = yield call(TasksService.fetchAllTasks, id);
     yield put(requestTasksSuccess(task));
   } catch (e) {
-    yield put({type: TasksActionTypes.FETCH_TASKS_ERROR, error: e});
+    yield put({type: TaskTableActionTypes.FETCH_TASKS_ERROR, error: e});
   }
 }
 
@@ -41,7 +41,7 @@ function* createTask() {
   try {
     const task: TaskType = yield call(TasksService.createTask, newTask);
     yield put({
-      type: TasksActionTypes.PUSH_NEW_TASK, payload: {
+      type: TaskTableActionTypes.PUSH_NEW_TASK, payload: {
         ...task,
         number: `${task.projectId}-${task.id}`
       }
@@ -58,14 +58,14 @@ function* deleteTask() {
 
   try {
     yield call(TasksService.deleteTaskById, taskId);
-    yield put({type: TasksActionTypes.DELETE_SYNC_TASK, payload: taskId})
+    yield put({type: TaskTableActionTypes.DELETE_SYNC_TASK, payload: taskId})
   } catch (e) {
     console.log(e)
   }
 }
 
 function* tasksSaga() {
-  yield takeEvery(TasksActionTypes.FETCH_TASKS, fetchTask);
+  yield takeEvery(TaskTableActionTypes.FETCH_TASKS, fetchTask);
   yield takeEvery(TaskActionTypes.PATCH_TASK, editTask);
   yield takeEvery(TaskActionTypes.CREATE_TASK, createTask);
   yield takeEvery(TaskActionTypes.DELETE_TASK, deleteTask);

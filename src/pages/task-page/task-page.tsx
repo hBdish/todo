@@ -2,10 +2,10 @@ import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../../shared";
 import {setSelectedProjectId, TaskTable} from "../../components";
 import {useParams} from "react-router-dom";
-import {TasksActionTypes} from "../../components/task-table/model/consts";
+import {TaskTableActionTypes} from "../../components/task-table/model/consts";
 import {DndProvider} from "react-dnd-multi-backend";
 import {HTML5toTouch} from "rdndmb-html5-to-touch";
-import {PreviewTask} from "../../components/task-card-preview/preview-task";
+import {PreviewTask} from "../../components/task-table/components/task-card-preview/preview-task";
 
 function TaskPage() {
   const {isLoading} = useAppSelector((state) => state.tasks);
@@ -16,7 +16,7 @@ function TaskPage() {
 
   useEffect(() => {
     dispatch(setSelectedProjectId(id ?? ''));
-    dispatch({type: TasksActionTypes.FETCH_TASKS, id: id});
+    dispatch({type: TaskTableActionTypes.FETCH_TASKS, id: id});
   }, [dispatch, id]);
 
 

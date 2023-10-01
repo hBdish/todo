@@ -1,22 +1,11 @@
-@mixin indentation {
+.taskTableCell {
+  max-height: 100%;
+  border-radius: 0 0 var(--main-border-radius) var(--main-border-radius);
   width: 320px;
   padding: 4px 4px;
   margin-left: 8px;
   margin-right: 8px;
   background: var(--background-table-color);
-}
-
-
-.taskTableCellHeader {
-  @include indentation;
-  border-radius: var(--main-border-radius) var(--main-border-radius) 0 0;
-}
-
-.taskTableCell {
-  max-height: 100%;
-  @include indentation;
-  border-radius: 0 0 var(--main-border-radius) var(--main-border-radius);
-  padding-bottom: 8px;
 
   .taskCard {
     &:first-child {

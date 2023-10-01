@@ -1,12 +1,12 @@
-import {Modal} from "../../ui/modal";
+import {Modal} from "../../../../ui/modal";
 import styles from './editable-task-card.module.scss'
-import {TaskType} from "../task-card/model/types/task-schema";
-import {Table} from "../../ui/table";
-import {Text} from "../../ui/text";
-import {Input} from "../../ui/input";
+import {TaskType} from "../../../task-card/model/types/task-schema";
+import {Table} from "../../../../ui/table";
+import {Text} from "../../../../ui/text";
+import {Input} from "../../../../ui/input";
 import {useEffect, useState} from "react";
-import {useAppDispatch} from "../../shared";
-import {patchTask, setEditableTask} from "../task-card/model/slice/task-actions";
+import {useAppDispatch} from "../../../../shared";
+import {patchTask, setEditableTask} from "../../../task-card/model/slice/task-actions";
 
 interface EditableTaskCardProps {
   isOpen: boolean;

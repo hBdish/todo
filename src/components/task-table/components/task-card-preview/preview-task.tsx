@@ -1,8 +1,8 @@
 import {FC} from "react";
 import {usePreview} from "react-dnd-preview";
-import {TaskType} from "../task-card/model/types/task-schema";
-import {DndPreviewPortal} from "../../ui/portals";
-import {TaskCard} from "../task-card";
+import {TaskType} from "../../../task-card/model/types/task-schema";
+import {DndPreviewPortal} from "../../../../ui/portals";
+import {TaskCard} from "../../../task-card";
 
 const PreviewTask: FC = () => {
   const preview = usePreview<{ type: string, task: TaskType }, Element>()

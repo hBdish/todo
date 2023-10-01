@@ -1,4 +1,4 @@
-export enum TasksActionTypes {
+export enum TaskTableActionTypes {
   FETCH_TASKS = "FETCH_TASKS",
   FETCH_TASKS_SUCCESS = "FETCH_TASKS_SUCCESS",
   FETCH_TASKS_ERROR = "FETCH_TASKS_ERROR",
@@ -6,7 +6,7 @@ export enum TasksActionTypes {
   DELETE_SYNC_TASK = "DELETE_SYNC_TASK",
 }
 
-export enum TasksSyncActionTypes {
+export enum TaskTableSyncActionTypes {
   MOVE_TASK = "MOVE_TASK",
 }
 
