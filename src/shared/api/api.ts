@@ -1,5 +1,6 @@
 import {CommonHttpClient} from "./client";
 import {TaskType} from "../../components/task-card/model/types/task-schema";
+import {ProjectType} from "../../components/project-table/model/types/types";
 
 const apiClient = new CommonHttpClient({
   config: {baseURL: "http://localhost:8000"},
@@ -41,7 +42,6 @@ class TasksService {
       task = newTask
     }
 
-    console.log(task)
     return apiClient.post<TaskType>(`/tasks`, task);
   }
 }
@@ -49,6 +49,23 @@ class TasksService {
 class ProjectsService {
   static fetchAllProjects() {
     return apiClient.get<TaskType[]>("/projects");
+  }
+
+  static createProject(newProject: ProjectType) {
+
+    return apiClient.post<ProjectType>(`/projects`, newProject);
+  }
+
+  static editProject(newProject: ProjectType) {
+    return apiClient.patch<ProjectType>(`/projects/${newProject.id}`, newProject, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+  }
+
+  static deleteProjectById(projectId: string) {
+    return apiClient.delete<object>(`/projects/${projectId}`);
   }
 }
 

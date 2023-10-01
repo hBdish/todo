@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   width: 100%;
-  border: 1px solid var(--card-color-hovered);
+
 }
+
 
 .inputField {
   background: none;
@@ -12,6 +13,7 @@
   width: 100%;
   padding: 0 4px;
   color: var(--main-text-color);
+
 
   &::placeholder {
     color: var(--main-text-color);
@@ -24,7 +26,7 @@
 }
 
 .focused {
-  border: 1px solid var(--accent-redesigned);
+  border: 1px solid var(--card-color-hovered);
 
   .addonLeft svg,
   .addonRight svg {

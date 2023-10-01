@@ -8,3 +8,5 @@ export const setSelectedProjectId = (id: string) => {
 export const requestProjectsSuccess = (data: ProjectType[]) => {
   return {type: ProjectActionTypes.FETCH_PROJECTS_SUCCESS, payload: data};
 };
+
+

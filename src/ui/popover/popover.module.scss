@@ -1,0 +1,26 @@
+.popup {
+  display: flex;
+}
+
+.navbarContent {
+  position: absolute;
+  z-index: 10;
+  width: 160px;
+  padding: 4px;
+  margin-top: 36px;
+  right: 40px;
+  background-color: var(--card-color-hovered);
+  border-radius: var(--main-border-radius);
+  display: flex;
+  flex-direction: column;
+}
+
+.popoverButton {
+  background: transparent;
+}
+
+.active {
+  background: var(--button-backgrond-hovered);
+}
+
+

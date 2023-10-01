@@ -9,6 +9,11 @@
       "id": "2",
       "name": "project2",
       "type": "Бизнес, управление командой"
+    },
+    {
+      "name": "test 3",
+      "type": "test 3",
+      "id": "tCkqYh3"
     }
   ],
   "tasks": [
@@ -34,7 +39,7 @@
       "timeInWork": 100,
       "dateCompleted": "08.01.2015",
       "priority": "HIGH",
-      "status": "Development"
+      "status": "Done"
     },
     {
       "id": "3",
@@ -75,7 +80,7 @@
     {
       "title": "aasf",
       "description": "",
-      "status": "Done",
+      "status": "Development",
       "dateCreated": "2002-02-07",
       "dateCompleted": "2002-02-07",
       "priority": "",

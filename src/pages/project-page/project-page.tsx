@@ -5,7 +5,7 @@ import styles from "./project-page.module.scss";
 
 
 function ProjectPage() {
-  const {isLoading, data: projects} = useAppSelector((state) => state.projects);
+  const {isLoading} = useAppSelector((state) => state.projects);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,9 +18,8 @@ function ProjectPage() {
 
   return (
     <div className={styles.tablePage}>
-      <ProjectTable projects={projects}/>
+      <ProjectTable/>
     </div>
-
   );
 }
 

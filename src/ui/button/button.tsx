@@ -3,7 +3,7 @@ import {classNames, Mods} from "../../shared";
 import {ButtonHTMLAttributes, CSSProperties, ReactNode} from "react";
 
 
-type ButtonVariant = 'clear';
+type ButtonVariant = 'primary' | 'clear' | 'success' | 'danger';
 
 type ButtonMargin = '0' | '4px' | '6px' | '8px';
 
@@ -13,6 +13,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   variant?: ButtonVariant;
   marginTop?: ButtonMargin
+  width?: number
+  height?: number
 }
 
 const Button = (props: ButtonProps) => {
@@ -22,6 +24,8 @@ const Button = (props: ButtonProps) => {
     disabled,
     variant = 'clear',
     marginTop = "0",
+    width,
+    height,
     ...otherProps
   } = props;
 
@@ -29,7 +33,9 @@ const Button = (props: ButtonProps) => {
     [styles.disabled]: disabled,
   };
 
-  const style: CSSProperties = {marginTop}
+  let style: CSSProperties
+  if (width || height) style = {marginTop, width: `${width}px`, height: `${height}px`}
+  else style = {marginTop}
 
   return (
     <button

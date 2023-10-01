@@ -1,6 +1,6 @@
 @import "src/app/styles/reset";
 
-* {
+body {
   font-family: var(--font-family-main);
   background: var(--background-color);
   color: var(--main-text-color);
@@ -11,8 +11,12 @@
   --background-table-color: #131618;
   --backgrond-card-color: #22272B;
   --card-color-hovered: #282E33;
+  --button-backgrond-hovered: #333a41;
+  --button-backgrond-primary: #579DFF;
+  --button-backgrond-primary-hovered: #82b3f8;
   --header-text-color: #B6C2CF;
   --main-text-color: #78828B;
+  --text-color-inverted: #1D2125;
 
   --main-border-radius: 0.25rem;
 

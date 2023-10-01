@@ -14,7 +14,18 @@ export const projectReducer = (
 ): ProjectSchema => {
   switch (action.type) {
     case ProjectSyncActionTypes.SET_SELECTED_PROJECT_ID:
-      return {selectedProjectId: action.payload};
+      return {selectedProjectId: action.payload, data: state.data, isLoading: false};
+    case ProjectActionTypes.CREATE_NEW_PROJECT:
+      const newData = state.data
+      if (!newData) return {data: state.data}
+      newData.push(action.payload)
+      return {data: newData, isLoading: false};
+    case ProjectActionTypes.PATCH_PROJECT:
+      return {data: state.data, isLoading: false};
+    case ProjectActionTypes.DELETE_PROJECT:
+      const allProject = state
+        .data?.filter(el => el.id !== state.selectedProjectId)
+      return {data: allProject, selectedProjectId: state.selectedProjectId};
     case ProjectActionTypes.FETCH_PROJECTS:
       return {isLoading: true, data: []};
     case ProjectActionTypes.FETCH_PROJECTS_SUCCESS:

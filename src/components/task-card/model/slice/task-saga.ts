@@ -20,6 +20,7 @@ function* fetchTask() {
   }
 }
 
+
 function* editTask() {
   const newTask: TaskType = yield select(
     (state: StateSchema) => state.task.editableTask

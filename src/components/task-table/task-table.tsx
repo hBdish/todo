@@ -111,7 +111,8 @@ const TaskTable = (props: TaskTableProps) => {
         setEditableTask(task)
         onToggleTaskModal()
       }}
-      key={task.id} task={task}
+      key={task.id}
+      task={task}
     />
   )
 
@@ -137,11 +138,16 @@ const TaskTable = (props: TaskTableProps) => {
               }
             })}
           />
-
         </div>)
     }
-
-    return <Button onClick={() => setIsCreate(true)} marginTop={"8px"}>Добавить</Button>
+    return <Button
+      width={312}
+      height={48}
+      onClick={() => setIsCreate(true)}
+      marginTop={"8px"}
+    >
+      Добавить
+    </Button>
   }
 
   return (

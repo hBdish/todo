@@ -1,24 +1,63 @@
+@mixin mainColorfulButtonStyle {
+  padding: 2px 4px;
+  border-radius: var(--main-border-radius);
+
+  & * {
+    color: var(--text-color-inverted);
+  }
+}
+
 .button {
   cursor: pointer;
 }
 
 .clear {
   padding: 0;
-  background: none;
-  outline: none;
-  width: 312px;
-  height: 48px;
-  border: 1px solid var(--card-color-hovered);
+  min-width: 32px;
+  min-height: 32px;
+  color: var(--main-text-color);
 
   @media (hover: hover) {
     &:hover {
-      background: var(--card-color-hovered);
+      border: 1px solid var(--card-color-hovered);
+      background: var(--button-backgrond-hovered);
     }
   }
 
   @media (hover: none) {
     &:active {
-      background: var(--card-color-hovered);
+      background: var(--button-backgrond-hovered);
     }
   }
+}
+
+.primary {
+  @include mainColorfulButtonStyle;
+
+  background: var(--button-backgrond-primary);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--button-backgrond-primary-hovered);
+      padding: 2px 5px;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      background: var(--button-backgrond-primary-hovered);
+    }
+  }
+}
+
+.success {
+  @include mainColorfulButtonStyle;
+  background: green;
+
+}
+
+.danger {
+  @include mainColorfulButtonStyle;
+  background: tomato;
+
 }

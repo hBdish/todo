@@ -1,8 +1,10 @@
-import {call, put, takeEvery} from "redux-saga/effects";
+import {call, put, select, takeEvery} from "redux-saga/effects";
 import {ProjectsService} from "../../../../shared";
 import {ProjectType} from "../types/types";
 import {requestProjectsSuccess} from "./project-action";
 import {ProjectActionTypes} from "../consts";
+import {StateSchema} from "../../../../app/store";
+import {SESSION_KEY_PROJECT} from "../../../../shared/consts/storage";
 
 function* fetchProjects() {
   try {
@@ -13,8 +15,38 @@ function* fetchProjects() {
   }
 }
 
+function* deleteProjects() {
+  const projectId: string = yield select(
+    (state: StateSchema) => state.projects.selectedProjectId
+  );
+
+  console.log(projectId)
+
+  try {
+    yield call(ProjectsService.deleteProjectById, projectId);
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+function* createProjects() {
+
+  const newProject: ProjectType = JSON.parse(sessionStorage.getItem(SESSION_KEY_PROJECT) ?? '')
+
+  console.log(newProject)
+
+  try {
+    const project: ProjectType = yield call(ProjectsService.createProject, newProject);
+    yield put({type: ProjectActionTypes.CREATE_NEW_PROJECT, payload: project});
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 function* projectSaga() {
   yield takeEvery(ProjectActionTypes.FETCH_PROJECTS, fetchProjects);
+  yield takeEvery(ProjectActionTypes.DELETE_PROJECT, deleteProjects);
+  yield takeEvery(ProjectActionTypes.TRIGGER_CREATE_NEW_PROJECT, createProjects);
 }
 
 export {projectSaga};
