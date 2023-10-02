@@ -9,4 +9,4 @@ export enum TaskActionTypes {
   DELETE_TASK = "DELETE_TASK",
 }
 
-export const TASK_DND_TYPE = 'task'
+export const TASK_DND_TYPE = "task";

@@ -1,21 +1,24 @@
-import {TaskTableActionTypes, TaskTableSyncActionTypes} from "../consts";
-import {TaskStatus, TaskType} from "../../../task-card/model/types/task-schema";
+import { TaskTableActionTypes, TaskTableSyncActionTypes } from "../consts";
+import {
+  TaskStatus,
+  TaskType,
+} from "../../../task-card/model/types/task-schema";
 
 interface TasksSchema {
   data?: TaskType[];
   isLoading?: boolean;
   error?: string;
-  allMap?: Map<TaskStatus, Map<string, TaskType>>
+  allMap?: Map<TaskStatus, Map<string, TaskType>>;
 }
 
 export interface TasksMoveType {
-  task: TaskType
-  keySet: TaskStatus
+  task: TaskType;
+  keySet: TaskStatus;
 }
 
 interface TasksActionMove {
   type: TaskTableSyncActionTypes.MOVE_TASK;
-  payload: TasksMoveType
+  payload: TasksMoveType;
 }
 
 interface TasksActionFetch {
@@ -42,7 +45,12 @@ interface TasksActionError {
   payload: string;
 }
 
-type TasksAsyncAction = TasksActionFetch | TasksActionSuccess | TasksActionError | TasksActionPush | TasksActionDelete
-type TasksAction = TasksAsyncAction | TasksActionMove
+type TasksAsyncAction =
+  | TasksActionFetch
+  | TasksActionSuccess
+  | TasksActionError
+  | TasksActionPush
+  | TasksActionDelete;
+type TasksAction = TasksAsyncAction | TasksActionMove;
 
-export type {TasksSchema, TasksAction};
+export type { TasksSchema, TasksAction };

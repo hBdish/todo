@@ -1,20 +1,22 @@
-import {ReactNode, useEffect, useRef} from 'react';
-import {createPortal} from "react-dom";
-
+import { ReactNode, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 interface DndPreviewPortalProps {
   children: ReactNode;
-  display: boolean
+  display: boolean;
 }
 
 const createDndElement = () => {
-  const el = document.createElement('div');
-  el.className = 'dnd-item';
+  const el = document.createElement("div");
+  el.className = "dnd-item";
   return el;
 };
 
-export const DndPreviewPortal = ({children, display}: DndPreviewPortalProps) => {
-  const el = useRef(createDndElement()).current
+export const DndPreviewPortal = ({
+  children,
+  display,
+}: DndPreviewPortalProps) => {
+  const el = useRef(createDndElement()).current;
   useEffect(() => {
     display ? document.body.appendChild(el) : document.body.removeChild(el);
   }, [display, el]);
@@ -30,5 +32,4 @@ export const DndPreviewPortal = ({children, display}: DndPreviewPortalProps) => 
   }
 
   return createPortal(children, el);
-}
-
+};

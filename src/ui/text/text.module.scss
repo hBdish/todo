@@ -1,8 +1,12 @@
 .title {
+  max-width: 260px;
+  overflow: hidden;
   color: var(--header-text-color);
 }
 
 .text {
+  max-width: 260px;
+  overflow: hidden;
   color: var(--main-text-color);
 }
 

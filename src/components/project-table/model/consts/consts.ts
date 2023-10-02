@@ -12,5 +12,3 @@ export enum ProjectActionTypes {
   PATCH_PROJECT = "PATCH_PROJECT",
   DELETE_PROJECT = "DELETE_PROJECT",
 }
-
-

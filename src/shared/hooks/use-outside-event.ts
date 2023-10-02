@@ -1,13 +1,13 @@
-import {MutableRefObject, useEffect} from 'react';
+import { MutableRefObject, useEffect } from "react";
 
-type Nullable<T> = T | null
+type Nullable<T> = T | null;
 
 interface OutsideEventTypes {
-  ref: Nullable<MutableRefObject<Nullable<HTMLElement>>>
-  onOutside: (result: any) => void
+  ref: Nullable<MutableRefObject<Nullable<HTMLElement>>>;
+  onOutside: (result: any) => void;
 }
 
-const useOutsideEvent = ({ref, onOutside}: OutsideEventTypes) => {
+const useOutsideEvent = ({ ref, onOutside }: OutsideEventTypes) => {
   useEffect(() => {
     if (!ref?.current) {
       return;
@@ -15,21 +15,20 @@ const useOutsideEvent = ({ref, onOutside}: OutsideEventTypes) => {
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        ref.current
-        && event.target
-        && !ref.current!.contains(event.target as Node)
+        ref.current &&
+        event.target &&
+        !ref.current!.contains(event.target as Node)
       ) {
         onOutside(null);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, onOutside]);
 };
 
-export {useOutsideEvent};
+export { useOutsideEvent };

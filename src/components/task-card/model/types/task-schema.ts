@@ -1,6 +1,6 @@
-import {TaskActionTypes, TaskSyncActionTypes} from "../../../index";
+import { TaskActionTypes, TaskSyncActionTypes } from "../../../index";
 
-export type TaskStatus = "Queue" | "Development" | "Done"
+export type TaskStatus = "Queue" | "Development" | "Done";
 
 interface TaskType {
   id?: string;
@@ -17,7 +17,7 @@ interface TaskType {
 
 interface TaskSchema {
   task?: TaskType;
-  editableTask?: TaskType
+  editableTask?: TaskType;
 }
 
 interface TaskActionPatch {
@@ -42,9 +42,12 @@ interface TaskActionEditTask {
   payload: TaskType;
 }
 
+type TaskActionSync = TaskActionSetTask | TaskActionEditTask;
 
-type TaskActionSync = TaskActionSetTask | TaskActionEditTask
+type TaskAction =
+  | TaskActionSync
+  | TaskActionPatch
+  | TaskActionCreate
+  | TaskActionDelete;
 
-type TaskAction = TaskActionSync | TaskActionPatch | TaskActionCreate | TaskActionDelete
-
-export type {TaskSchema, TaskType, TaskAction};
+export type { TaskSchema, TaskType, TaskAction };

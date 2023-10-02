@@ -9,4 +9,3 @@ export enum TaskTableActionTypes {
 export enum TaskTableSyncActionTypes {
   MOVE_TASK = "MOVE_TASK",
 }
-

@@ -1,10 +1,9 @@
-import styles from '../coomon-style.module.scss';
-import {classNames} from "../../../shared";
-import {TableHeaderCellProps} from "../types";
-
+import styles from "../coomon-style.module.scss";
+import { classNames } from "../../../shared";
+import { TableHeaderCellProps } from "../types";
 
 const TableHeaderCell = (props: TableHeaderCellProps) => {
-  const {className, children} = props;
+  const { className, children } = props;
 
   return (
     <div className={classNames(styles.tableHeaderCell, {}, [className])}>
@@ -13,4 +12,4 @@ const TableHeaderCell = (props: TableHeaderCellProps) => {
   );
 };
 
-export {TableHeaderCell};
+export { TableHeaderCell };

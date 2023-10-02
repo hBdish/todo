@@ -1,0 +1,25 @@
+.Skeleton {
+  width: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  .image {
+    height: 100%;
+    background: #eee;
+    background: linear-gradient(
+      90deg,
+      var(--card-color-hovered) 0%,
+      var(--background-color) 50%,
+      var(--card-color-hovered) 100%
+    );
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: 2.5s shine linear infinite;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}

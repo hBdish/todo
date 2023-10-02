@@ -1,14 +1,17 @@
-import {DetailedHTMLProps, HTMLAttributes, ReactNode} from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 
-import styles from './flex.module.scss';
-import {classNames, Mods} from "../../../shared";
+import styles from "./flex.module.scss";
+import { classNames, Mods } from "../../../shared";
 
-export type FlexJustify = 'start' | 'center' | 'end' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end';
-export type FlexDirection = 'row' | 'column';
-export type FlexGap = '4' | '8' | '16' | '24' | '32' | '40';
+export type FlexJustify = "start" | "center" | "end" | "between";
+export type FlexAlign = "start" | "center" | "end";
+export type FlexDirection = "row" | "column";
+export type FlexGap = "4" | "8" | "16" | "24" | "32" | "40";
 
-type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+type DivProps = DetailedHTMLProps<
+  HTMLAttributes<HTMLDivElement>,
+  HTMLDivElement
+>;
 
 export interface FlexProps extends DivProps {
   className?: string;
@@ -24,9 +27,9 @@ const Flex = (props: FlexProps) => {
   const {
     className,
     children,
-    justify = 'start',
-    align = 'start',
-    direction = 'row',
+    justify = "start",
+    align = "start",
+    direction = "row",
     gap,
     w100 = false,
     ...otherProps
@@ -72,13 +75,10 @@ const Flex = (props: FlexProps) => {
   };
 
   return (
-    <div
-      className={classNames(styles.Flex, mods, classes)}
-      {...otherProps}
-    >
+    <div className={classNames(styles.flex, mods, classes)} {...otherProps}>
       {children}
     </div>
   );
 };
 
-export {Flex};
+export { Flex };

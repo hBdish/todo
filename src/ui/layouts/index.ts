@@ -1,1 +1,1 @@
-export * from './task-page-layots'
+export * from "./task-page-layots";

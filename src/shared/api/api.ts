@@ -1,13 +1,13 @@
-import {CommonHttpClient} from "./client";
-import {TaskType} from "../../components/task-card/model/types/task-schema";
-import {ProjectType} from "../../components/project-table/model/types/types";
+import { CommonHttpClient } from "./client";
+import { TaskType } from "../../components/task-card/model/types/task-schema";
+import { ProjectType } from "../../components/project-table/model/types/types";
 
 const apiClient = new CommonHttpClient({
-  config: {baseURL: "https://todoback-0ei2krkw.b4a.run"}, // TODO ВЫНЕСТИ
+  config: { baseURL: "https://todoback-0ei2krkw.b4a.run" }, // TODO ВЫНЕСТИ
 });
 
 class TasksService {
-  static fetchAllTasks(data: { projectId: string, search: string }) {
+  static fetchAllTasks(data: { projectId: string; search: string }) {
     return apiClient.get<TaskType[]>(`/tasks?q=${data.search}`, {
       params: {
         projectId: data.projectId,
@@ -18,13 +18,12 @@ class TasksService {
   static editTask(newTask: TaskType) {
     return apiClient.patch<TaskType>(`/tasks/${newTask.id}`, newTask, {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
     });
   }
 
   static createTask(newTask: TaskType) {
-
     return apiClient.post<TaskType>(`/tasks`, newTask);
   }
 
@@ -39,16 +38,19 @@ class ProjectsService {
   }
 
   static createProject(newProject: ProjectType) {
-
     return apiClient.post<ProjectType>(`/projects`, newProject);
   }
 
   static editProject(newProject: ProjectType) {
-    return apiClient.patch<ProjectType>(`/projects/${newProject.id}`, newProject, {
-      headers: {
-        "Content-Type": "application/json"
+    return apiClient.patch<ProjectType>(
+      `/projects/${newProject.id}`,
+      newProject,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
   }
 
   static deleteProjectById(projectId: string) {
@@ -56,4 +58,4 @@ class ProjectsService {
   }
 }
 
-export {TasksService, ProjectsService};
+export { TasksService, ProjectsService };

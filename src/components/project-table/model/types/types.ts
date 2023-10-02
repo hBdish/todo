@@ -1,15 +1,15 @@
-import {ProjectActionTypes, ProjectSyncActionTypes} from "../consts";
+import { ProjectActionTypes, ProjectSyncActionTypes } from "../consts";
 
 interface ProjectType {
-  id?: string
-  name?: string,
-  type?: string
+  id?: string;
+  name?: string;
+  type?: string;
 }
 
 interface ProjectSchema {
-  data?: ProjectType[]
-  isLoading?: boolean
-  error?: string
+  data?: ProjectType[];
+  isLoading?: boolean;
+  error?: string;
   selectedProjectId?: string;
 }
 
@@ -55,16 +55,15 @@ interface TriggerProjectActionPatch {
 }
 
 type ProjectAsyncAction =
-  ProjectActionFetch
+  | ProjectActionFetch
   | ProjectActionSuccess
   | ProjectActionError
   | ProjectActionDelete
   | ProjectActionCreate
   | ProjectActionPatch
   | TriggerProjectActionCreate
-  | TriggerProjectActionPatch
+  | TriggerProjectActionPatch;
 
+type ProjectAction = ProjectSyncAction | ProjectAsyncAction;
 
-type ProjectAction = ProjectSyncAction | ProjectAsyncAction
-
-export type {ProjectSchema, ProjectAction, ProjectType};
+export type { ProjectSchema, ProjectAction, ProjectType };

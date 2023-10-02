@@ -5,7 +5,6 @@
   background: var(--backgrond-card-color);
   cursor: pointer;
 
-
   @media (hover: hover) {
     &:hover {
       background: var(--card-color-hovered);
@@ -18,4 +17,3 @@
     }
   }
 }
-

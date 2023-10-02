@@ -1,108 +1,99 @@
-import {Modal} from "../../../../ui/modal";
-import styles from './editable-task-card.module.scss'
-import {TaskType} from "../../../task-card/model/types/task-schema";
-import {Text} from "../../../../ui/text";
-import {Input} from "../../../../ui/input";
-import {useEffect, useState} from "react";
-import {useAppDispatch} from "../../../../shared";
-import {patchTask, setEditableTask} from "../../../task-card/model/slice/task-actions";
-import {Vstack} from "../../../../ui/stack";
-import {Textarea} from "../../../../ui/textarea";
-
+import { Modal } from "../../../../ui/modal";
+import styles from "./editable-task-card.module.scss";
+import { TaskType } from "../../../task-card/model/types/task-schema";
+import { Text } from "../../../../ui/text";
+import { Input } from "../../../../ui/input";
+import { useEffect, useState } from "react";
+import { useAppDispatch } from "../../../../shared";
+import {
+  patchTask,
+  setEditableTask,
+} from "../../../task-card/model/slice/task-actions";
+import { Vstack } from "../../../../ui/stack";
+import { Textarea } from "../../../../ui/textarea";
 
 interface EditableTaskCardProps {
   isOpen: boolean;
   onClose: () => void;
-  task?: TaskType
+  task?: TaskType;
 }
 
 const calcDayInWork = (startDay: string) => {
-  const start = new Date(startDay).getTime()
+  const start = new Date(startDay).getTime();
 
-  const daysInMs = Date.now() - start
+  const daysInMs = Date.now() - start;
 
   return Math.ceil(daysInMs / 86400000);
-}
+};
 
 const EditableTaskCard = (props: EditableTaskCardProps) => {
-  const {onClose, isOpen, task} = props;
-  const [editTask, setEditTask] = useState<TaskType>()
-  const dispatch = useAppDispatch()
+  const { onClose, isOpen, task } = props;
+  const [editTask, setEditTask] = useState<TaskType>();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!task) return
-    setEditTask(task)
-
+    if (!task) return;
+    setEditTask(task);
   }, [task]);
 
   const updateTaskData = (editTask: TaskType) => {
-    setEditTask(prevState => {
-      return {...prevState, ...editTask}
-    })
-  }
+    setEditTask((prevState) => {
+      return { ...prevState, ...editTask };
+    });
+  };
 
   const patchTaskData = (editTask: TaskType) => {
-    dispatch(setEditableTask(editTask))
-    dispatch(patchTask(editTask))
-  }
+    dispatch(setEditableTask(editTask));
+    dispatch(patchTask(editTask));
+  };
 
   return (
-    <Modal
-      onClose={onClose}
-      isOpen={isOpen}
-    >
+    <Modal onClose={onClose} isOpen={isOpen}>
       <div className={styles.modal}>
         <Vstack w100 className={styles.leftContent}>
+          <Input readonly value={editTask?.number} />
           <Input
-            readonly
-            value={editTask?.number}
-          />
-          <Input
-            label={'Название'}
+            label={"Название"}
             value={editTask?.title}
-            onChange={(value) => updateTaskData({title: value})}
+            onChange={(value) => updateTaskData({ title: value })}
             onBlur={() => {
-              if (task?.title !== editTask?.title) patchTaskData(editTask as TaskType)
+              if (task?.title !== editTask?.title)
+                patchTaskData(editTask as TaskType);
             }}
           />
-        
+
           <Textarea
             onBlur={() => {
-              if (task?.description !== editTask?.description) patchTaskData(editTask as TaskType)
+              if (task?.description !== editTask?.description)
+                patchTaskData(editTask as TaskType);
             }}
-            label={'Описание'}
-            placeholder={'Редактировать описание'}
-            onChange={(value) => updateTaskData({description: value})}
+            label={"Описание"}
+            placeholder={"Редактировать описание"}
+            onChange={(value) => updateTaskData({ description: value })}
             value={editTask?.description}
           />
-          <div className={styles.commentBlock}>
-          </div>
+          <div className={styles.commentBlock}></div>
         </Vstack>
-        <Vstack
-          w100
-          gap={"8"}
-          className={styles.rightContent}>
-          <Text
-            title={'Сведения'}
-            bold/>
+        <Vstack w100 gap={"8"} className={styles.rightContent}>
+          <Text title={"Сведения"} bold />
+          <Input label={"Приоритет"} value={editTask?.priority} />
           <Input
-            label={'Приоритет'}
-            value={editTask?.priority}/>
-          <Input
-            label={'Дней в работе'}
-            value={calcDayInWork(editTask?.dateCreated ?? '')}/>
+            label={"Дней в работе"}
+            value={calcDayInWork(editTask?.dateCreated ?? "")}
+          />
           <Input
             type={"date"}
-            label={'Дата создания'}
+            label={"Дата создания"}
             value={editTask?.dateCreated}
           />
           <Input
             type={"date"}
-            label={'Дата завершения'}
+            label={"Дата завершения"}
             value={editTask?.dateCompleted}
-            onChange={(value) => updateTaskData({dateCompleted: value})}
+            onChange={(value) => updateTaskData({ dateCompleted: value })}
             onBlur={() => {
-              if (task?.dateCompleted !== editTask?.dateCompleted) patchTaskData(editTask as TaskType)
+              if (task?.dateCompleted !== editTask?.dateCompleted)
+                patchTaskData(editTask as TaskType);
             }}
           />
         </Vstack>
@@ -111,4 +102,4 @@ const EditableTaskCard = (props: EditableTaskCardProps) => {
   );
 };
 
-export {EditableTaskCard};
+export { EditableTaskCard };

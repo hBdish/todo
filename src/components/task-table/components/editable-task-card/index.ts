@@ -1,1 +1,1 @@
-export * from './editable-task-card'
+export * from "./editable-task-card";

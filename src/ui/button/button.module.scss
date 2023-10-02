@@ -52,12 +52,12 @@
 
 .success {
   @include mainColorfulButtonStyle;
-  background: green;
 
+  background: green;
 }
 
 .danger {
   @include mainColorfulButtonStyle;
-  background: tomato;
 
+  background: tomato;
 }

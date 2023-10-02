@@ -1,14 +1,20 @@
-import React, {InputHTMLAttributes, memo, ReactNode, useEffect, useRef, useState} from 'react';
-import styles from './textarea.module.scss';
-import {Text} from "../text";
-import {Vstack} from "../stack";
-import {classNames, Mods} from "../../shared";
+import React, {
+  InputHTMLAttributes,
+  memo,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import styles from "./textarea.module.scss";
+import { Text } from "../text";
+import { Vstack } from "../stack";
+import { classNames, Mods } from "../../shared";
 
 type HTMLTextAreaProps = Omit<
   InputHTMLAttributes<HTMLTextAreaElement>,
-  'value' | 'onChange' | 'readOnly' | 'pattern'
+  "value" | "onChange" | "readOnly" | "pattern"
 >;
-
 
 interface TextAreaProps extends HTMLTextAreaProps {
   className?: string;
@@ -31,7 +37,7 @@ const Textarea = memo((props: TextAreaProps) => {
     placeholder,
     addonLeft,
     addonRight,
-    label = '',
+    label = "",
     ...otherProps
   } = props;
 
@@ -39,7 +45,7 @@ const Textarea = memo((props: TextAreaProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const {value} = e.target;
+    const { value } = e.target;
     onChange?.(value);
   };
 
@@ -79,19 +85,15 @@ const Textarea = memo((props: TextAreaProps) => {
         placeholder={placeholder}
         {...otherProps}
       />
-      <span
-        role="textbox"></span>
+      <span role="textbox"></span>
       <div className={styles.addonRight}>{addonRight}</div>
     </div>
   );
 
-
   if (label) {
     return (
-      <Vstack
-        w100
-      >
-        <Text title={label}/>
+      <Vstack w100>
+        <Text title={label} />
         {input}
       </Vstack>
     );
@@ -100,4 +102,4 @@ const Textarea = memo((props: TextAreaProps) => {
   return input;
 });
 
-export {Textarea};
+export { Textarea };

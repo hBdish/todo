@@ -1,9 +1,9 @@
-import {applyMiddleware, combineReducers, createStore} from "redux"; // createStore использую осознанно, так как по ТЗ тулкит использовать запрещено
+import { applyMiddleware, combineReducers, createStore } from "redux"; // createStore использую осознанно, так как по ТЗ тулкит использовать запрещено
 import createSagaMiddleware from "redux-saga";
-import {tasksSaga, taskTableReducer} from "../../pages";
-import {projectReducer, projectSaga} from "../../components";
-import {taskReducer} from "../../components/task-card/model/slice/task-reducer";
-import {searchReducer} from "../../components/search-filter/model/slice";
+import { tasksSaga, taskTableReducer } from "../../pages";
+import { projectReducer, projectSaga } from "../../components";
+import { taskReducer } from "../../components/task-card/model/slice/task-reducer";
+import { searchReducer } from "../../components/search-filter/model/slice";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,7 +14,7 @@ export const store = createStore(
     task: taskReducer,
     search: searchReducer,
   }),
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(sagaMiddleware),
 );
 
 sagaMiddleware.run(tasksSaga);

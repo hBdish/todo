@@ -1,7 +1,7 @@
-import {SearchActionTypes} from "../consts";
+import { SearchActionTypes } from "../consts";
 
 export interface SearchSchema {
-  search?: string
+  search?: string;
 }
 
 interface SearchActionSetValue {
@@ -9,6 +9,6 @@ interface SearchActionSetValue {
   payload: string;
 }
 
-type SearchAction = SearchActionSetValue
+type SearchAction = SearchActionSetValue;
 
-export type {SearchAction};
+export type { SearchAction };

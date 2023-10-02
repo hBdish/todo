@@ -1,18 +1,22 @@
-
 .tableRowBody {
   cursor: pointer;
 
   .tableCellBody {
-
     input {
-      width: auto;
+      max-width: 300px;
+      outline: none;
+    }
+
+    @media screen and (width < 600px) {
+      input {
+        max-width: 80px;
+      }
     }
   }
 
   &:last-child .tableCellBody {
     border-bottom: 2px solid var(--card-color-hovered);
   }
-
 
   @media (hover: hover) {
     &:hover .tableCellBody {

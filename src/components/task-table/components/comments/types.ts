@@ -1,6 +1,6 @@
 interface CommentType {
-  commentText: string,
-  comments: CommentType[]
+  commentText: string;
+  comments: CommentType[];
 }
 
-export type {CommentType}
+export type { CommentType };

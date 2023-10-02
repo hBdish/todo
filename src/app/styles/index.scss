@@ -7,20 +7,19 @@ body {
 }
 
 :root {
-  --background-color: #1D2125;
+  --background-color: #1d2125;
   --background-table-color: #131618;
-  --backgrond-card-color: #22272B;
-  --card-color-hovered: #282E33;
+  --backgrond-card-color: #22272b;
+  --card-color-hovered: #282e33;
   --button-backgrond-hovered: #333a41;
-  --button-backgrond-primary: #579DFF;
+  --button-backgrond-primary: #579dff;
   --button-backgrond-primary-hovered: #82b3f8;
-  --header-text-color: #B6C2CF;
-  --main-text-color: #78828B;
-  --text-color-inverted: #1D2125;
-
+  --header-text-color: #b6c2cf;
+  --main-text-color: #78828b;
+  --text-color-inverted: #1d2125;
   --main-border-radius: 0.25rem;
-
-  --font-family-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-family-main: -apple-system, blinkmacsystemfont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --font-size-s: 14px;
   --font-line-s: 16px;
   --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);

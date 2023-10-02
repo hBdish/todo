@@ -1,15 +1,15 @@
-import {TaskAction, TaskSchema} from "../types/task-schema";
+import { TaskAction, TaskSchema } from "../types/task-schema";
 
-import {TaskActionTypes, TaskSyncActionTypes} from "../../../index";
+import { TaskActionTypes, TaskSyncActionTypes } from "../../../index";
 
 const initialState: TaskSchema = {
   task: undefined,
-  editableTask: undefined
+  editableTask: undefined,
 };
 
 export const taskReducer = (
   state = initialState,
-  action: TaskAction
+  action: TaskAction,
 ): TaskSchema => {
   switch (action.type) {
     case TaskActionTypes.PATCH_TASK:
@@ -19,9 +19,9 @@ export const taskReducer = (
     case TaskActionTypes.DELETE_TASK:
       return state;
     case TaskSyncActionTypes.SET_TASK:
-      return {task: action.payload, editableTask: action.payload};
+      return { task: action.payload, editableTask: action.payload };
     case TaskSyncActionTypes.SET_EDITABLE_TASK:
-      return {editableTask: action.payload};
+      return { editableTask: action.payload };
     default:
       return state;
   }

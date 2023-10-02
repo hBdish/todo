@@ -1,15 +1,15 @@
-import styles from './task-page-layouts.module.scss';
-import {classNames} from "../../../shared";
-import {ReactNode} from "react";
+import styles from "./task-page-layouts.module.scss";
+import { classNames } from "../../../shared";
+import { ReactNode } from "react";
 
 interface TaskPageLayoutsProps {
-  className?: string
-  header: ReactNode
-  content: ReactNode
+  className?: string;
+  header: ReactNode;
+  content: ReactNode;
 }
 
 const TaskPageLayouts = (props: TaskPageLayoutsProps) => {
-  const {className, header, content} = props;
+  const { className, header, content } = props;
 
   return (
     <div className={classNames(styles.taskPageLayouts, {}, [className])}>
@@ -19,4 +19,4 @@ const TaskPageLayouts = (props: TaskPageLayoutsProps) => {
   );
 };
 
-export {TaskPageLayouts};
+export { TaskPageLayouts };

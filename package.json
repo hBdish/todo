@@ -25,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:dev:server": "node ./json-server/index.js",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -54,6 +55,11 @@
     "@types/react": "^18.2.23",
     "@types/react-dom": "^18.2.7",
     "@types/react-redux": "^7.1.26",
-    "json-server": "^0.17.3"
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "json-server": "^0.17.3",
+    "prettier": "3.0.3",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^11.0.0"
   }
 }

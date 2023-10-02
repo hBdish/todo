@@ -1,5 +1,5 @@
-import styles from './overlay.module.scss';
-import {classNames} from "../../shared";
+import styles from "./overlay.module.scss";
+import { classNames } from "../../shared";
 
 interface OverlayProps {
   className?: string;
@@ -7,7 +7,7 @@ interface OverlayProps {
 }
 
 const Overlay = (props: OverlayProps) => {
-  const {className, onClick} = props;
+  const { className, onClick } = props;
 
   return (
     <div
@@ -17,4 +17,4 @@ const Overlay = (props: OverlayProps) => {
   );
 };
 
-export {Overlay};
+export { Overlay };

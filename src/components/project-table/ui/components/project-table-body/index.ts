@@ -1,1 +1,1 @@
-export * from './project-table-body'
+export * from "./project-table-body";

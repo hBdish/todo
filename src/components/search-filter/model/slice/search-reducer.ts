@@ -1,18 +1,17 @@
-import {SearchAction, SearchSchema} from "../types";
-import {SearchActionTypes} from "../consts";
-
+import { SearchAction, SearchSchema } from "../types";
+import { SearchActionTypes } from "../consts";
 
 const initialState: SearchSchema = {
-  search: ''
+  search: "",
 };
 
 export const searchReducer = (
   state = initialState,
-  action: SearchAction
+  action: SearchAction,
 ): SearchSchema => {
   switch (action.type) {
     case SearchActionTypes.SET_SEARCH: {
-      return {search: action.payload};
+      return { search: action.payload };
     }
 
     default: {

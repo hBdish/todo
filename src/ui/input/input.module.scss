@@ -3,10 +3,6 @@
   align-items: center;
   width: 100%;
 
-  :hover {
-    background: var(--card-color-hovered);
-  }
-
   & > .inputField {
     color: var(--main-text-color);
   }
@@ -44,21 +40,9 @@
 
 .addonRight {
   position: absolute;
-  left: 96px;
+  left: 140px;
 }
 
-.focused {
-  border: 1px solid var(--card-color-hovered);
-
-  .inputField {
-    background: var(--card-color-hovered);
-  }
-
-  .addonLeft img,
-  .addonRight img {
-    opacity: 0;
-  }
-}
 
 .withAddonLeft {
   padding-left: 8px;
@@ -70,4 +54,14 @@
 
 .readonly {
   font-size: var(--font-size-l);
+}
+
+.focused {
+  border: 1px solid var(--card-color-hovered);
+  background: var(--card-color-hovered);
+
+  .addonLeft img,
+  .addonRight img {
+    opacity: 0;
+  }
 }
