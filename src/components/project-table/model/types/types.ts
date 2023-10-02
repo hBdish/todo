@@ -50,6 +50,10 @@ interface ProjectActionPatch {
   payload: ProjectType;
 }
 
+interface TriggerProjectActionPatch {
+  type: ProjectActionTypes.TRIGGER_PATCH_PROJECT;
+}
+
 type ProjectAsyncAction =
   ProjectActionFetch
   | ProjectActionSuccess
@@ -58,6 +62,7 @@ type ProjectAsyncAction =
   | ProjectActionCreate
   | ProjectActionPatch
   | TriggerProjectActionCreate
+  | TriggerProjectActionPatch
 
 
 type ProjectAction = ProjectSyncAction | ProjectAsyncAction

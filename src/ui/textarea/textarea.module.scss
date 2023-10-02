@@ -1,41 +1,24 @@
-.Input {
-  display: flex;
-  align-items: center;
+.textarea {
   width: 100%;
 
   :hover {
     background: var(--card-color-hovered);
   }
 
-  & > .inputField {
-    color: var(--main-text-color);
-  }
-}
-
-.search {
-  .inputField {
-    width: 120px;
-    height: 3pc;
-    border: 2px solid var(--button-backgrond-hovered);
-    font-size: var(--font-size-l);
-  }
-
-  &::placeholder {
-    color: var(--main-text-color);
-  }
-}
-
-.primary {
-  .inputField {
+  .textareaField {
     width: 100%;
-    min-height: 2pc;
+    height: 100%;
     padding: 0 4px;
+    overflow: scroll;
+    color: var(--main-text-color);
+    resize: inherit;
 
     &::placeholder {
       color: var(--main-text-color);
     }
   }
 }
+
 
 .addonLeft,
 .addonRight {
@@ -50,7 +33,7 @@
 .focused {
   border: 1px solid var(--card-color-hovered);
 
-  .inputField {
+  .textareaField {
     background: var(--card-color-hovered);
   }
 
@@ -69,5 +52,5 @@
 }
 
 .readonly {
-  font-size: var(--font-size-l);
+  opacity: 0.7;
 }

@@ -7,42 +7,8 @@ import {useEffect, useState} from "react";
 import {useAppDispatch} from "../../../../shared";
 import {patchTask, setEditableTask} from "../../../task-card/model/slice/task-actions";
 import {Vstack} from "../../../../ui/stack";
-import {CommentType} from "../comments/types";
+import {Textarea} from "../../../../ui/textarea";
 
-
-const comment: CommentType[] = [
-  {
-    commentText: 'comment 1',
-    comments: [
-      {
-        commentText: 'subComment 1',
-        comments: []
-      },
-      {
-        commentText: 'subComment 2',
-        comments: [
-          {
-            commentText: 'subSubComment 1',
-            comments: []
-          },
-          {
-            commentText: 'subSubComment 2',
-            comments: [
-              {
-                commentText: 'subSubSubComment 1',
-                comments: []
-              },
-              {
-                commentText: 'subSubSubComment 2',
-                comments: []
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
 
 interface EditableTaskCardProps {
   isOpen: boolean;
@@ -99,7 +65,8 @@ const EditableTaskCard = (props: EditableTaskCardProps) => {
               if (task?.title !== editTask?.title) patchTaskData(editTask as TaskType)
             }}
           />
-          <Input
+        
+          <Textarea
             onBlur={() => {
               if (task?.description !== editTask?.description) patchTaskData(editTask as TaskType)
             }}
@@ -109,26 +76,34 @@ const EditableTaskCard = (props: EditableTaskCardProps) => {
             value={editTask?.description}
           />
           <div className={styles.commentBlock}>
-            {/*<Comments comment={comment}/>*/}
           </div>
         </Vstack>
-        <Vstack w100 gap={"8"} className={styles.rightContent}>
-          <Text title={'Сведения'} bold/>
-          <Input label={'Приоритет'}
-                 value={editTask?.priority}/>
-          <Input label={'Дней в работе'}
-                 value={calcDayInWork(editTask?.dateCreated ?? '')}/>
+        <Vstack
+          w100
+          gap={"8"}
+          className={styles.rightContent}>
+          <Text
+            title={'Сведения'}
+            bold/>
+          <Input
+            label={'Приоритет'}
+            value={editTask?.priority}/>
+          <Input
+            label={'Дней в работе'}
+            value={calcDayInWork(editTask?.dateCreated ?? '')}/>
           <Input
             type={"date"}
             label={'Дата создания'}
             value={editTask?.dateCreated}
           />
-          <Input type={"date"} label={'Дата завершения'}
-                 value={editTask?.dateCompleted}
-                 onChange={(value) => updateTaskData({dateCompleted: value})}
-                 onBlur={() => {
-                   if (task?.dateCompleted !== editTask?.dateCompleted) patchTaskData(editTask as TaskType)
-                 }}
+          <Input
+            type={"date"}
+            label={'Дата завершения'}
+            value={editTask?.dateCompleted}
+            onChange={(value) => updateTaskData({dateCompleted: value})}
+            onBlur={() => {
+              if (task?.dateCompleted !== editTask?.dateCompleted) patchTaskData(editTask as TaskType)
+            }}
           />
         </Vstack>
       </div>

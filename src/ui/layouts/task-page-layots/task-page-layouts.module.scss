@@ -1,0 +1,22 @@
+.taskPageLayouts {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 40px;
+  gap: 10px;
+
+  @media screen and (width < 600px) {
+    padding: 0;
+  }
+}
+
+.header {
+  margin-left: 8px;
+}
+
+.content {
+  max-width: 1020px;
+  min-height: 90%;
+  padding-top: 8px;
+  background: var(--backgrond-card-color);
+}

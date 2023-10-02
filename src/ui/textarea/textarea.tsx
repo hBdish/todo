@@ -1,60 +1,54 @@
 import React, {InputHTMLAttributes, memo, ReactNode, useEffect, useRef, useState} from 'react';
-import styles from './input.module.scss';
+import styles from './textarea.module.scss';
 import {Text} from "../text";
 import {Vstack} from "../stack";
 import {classNames, Mods} from "../../shared";
 
-type HTMLInputProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
+type HTMLTextAreaProps = Omit<
+  InputHTMLAttributes<HTMLTextAreaElement>,
   'value' | 'onChange' | 'readOnly' | 'pattern'
 >;
 
-type InputVariant = 'primary' | 'search' | 'big'
 
-interface InputProps extends HTMLInputProps {
+interface TextAreaProps extends HTMLTextAreaProps {
   className?: string;
   value?: string | number;
   onChange?: (value: string) => void;
   autoFocus?: boolean;
   readonly?: boolean;
-  pattern?: string;
   label?: string;
   addonLeft?: ReactNode;
   addonRight?: ReactNode;
-  variant?: InputVariant
 }
 
-const Input = memo((props: InputProps) => {
+const Textarea = memo((props: TextAreaProps) => {
   const {
     className,
     value,
     onChange,
-    type = 'text',
     autoFocus,
     readonly = false,
     placeholder,
-    pattern = '(.*?)',
     addonLeft,
     addonRight,
     label = '',
-    variant = 'primary',
     ...otherProps
   } = props;
 
-  const ref = useRef<HTMLInputElement | null>(null);
+  const ref = useRef<HTMLTextAreaElement | null>(null);
   const [isFocused, setIsFocused] = useState(false);
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const {value} = e.target;
-    RegExp(pattern).test(value) && onChange?.(value);
-  };
-
-  const onBlur = () => {
-    setIsFocused(false);
+    onChange?.(value);
   };
 
   const onFocus = () => {
     setIsFocused(true);
+  };
+
+  const onBlur = () => {
+    setIsFocused(false);
   };
 
   useEffect(() => {
@@ -72,18 +66,16 @@ const Input = memo((props: InputProps) => {
   };
 
   const input = (
-    <div className={classNames(styles.Input, mods, [className, styles[variant]])}>
+    <div className={classNames(styles.textarea, mods, [className])}>
       <div className={styles.addonLeft}>{addonLeft}</div>
-      <input
+      <textarea
         ref={ref}
         readOnly={readonly}
-        type={type}
         value={value}
         onChange={onChangeHandler}
-        className={styles.inputField}
+        className={styles.textareaField}
         onFocus={onFocus}
         onBlur={onBlur}
-        pattern={pattern}
         placeholder={placeholder}
         {...otherProps}
       />
@@ -92,7 +84,7 @@ const Input = memo((props: InputProps) => {
       <div className={styles.addonRight}>{addonRight}</div>
     </div>
   );
-  
+
 
   if (label) {
     return (
@@ -108,4 +100,4 @@ const Input = memo((props: InputProps) => {
   return input;
 });
 
-export {Input};
+export {Textarea};

@@ -1,7 +1,13 @@
 
 .tableRowBody {
-
   cursor: pointer;
+
+  .tableCellBody {
+
+    input {
+      width: auto;
+    }
+  }
 
   &:last-child .tableCellBody {
     border-bottom: 2px solid var(--card-color-hovered);

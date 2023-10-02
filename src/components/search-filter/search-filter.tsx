@@ -1,8 +1,9 @@
 import styles from './search-filter.module.scss';
-import {classNames, useAppDispatch, useAppSelector, useDebounce} from "../../shared";
+import {classNames, SearchIcon, useAppDispatch, useAppSelector, useDebounce} from "../../shared";
 import {Input} from "../../ui/input";
 import {setSearchValue} from "./model/slice";
 import {TaskTableActionTypes} from "../task-table/model/consts";
+import {AppImage} from "../../ui/app-image";
 
 interface SearchFilterProps {
   className?: string
@@ -18,10 +19,15 @@ const SearchFilter = (props: SearchFilterProps) => {
 
   return (
     <div className={classNames(styles.SearchFilter, {}, [className])}>
-      <Input label={"Поиск"} value={search ?? ''} onChange={(value) => {
-        dispatch(setSearchValue(value))
-        debounce()
-      }}/>
+      <Input
+        variant={"search"}
+        addonRight={<AppImage src={SearchIcon}/>}
+        label={"Поиск"}
+        value={search ?? ''}
+        onChange={(value) => {
+          dispatch(setSearchValue(value))
+          debounce()
+        }}/>
     </div>
   );
 };

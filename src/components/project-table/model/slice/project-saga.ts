@@ -40,10 +40,21 @@ function* createProjects() {
   }
 }
 
+function* patchProjects() {
+  const newProject: ProjectType = JSON.parse(sessionStorage.getItem(SESSION_KEY_PROJECT) ?? '')
+
+  try {
+    yield call(ProjectsService.editProject, newProject);
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 function* projectSaga() {
   yield takeEvery(ProjectActionTypes.FETCH_PROJECTS, fetchProjects);
   yield takeEvery(ProjectActionTypes.DELETE_PROJECT, deleteProjects);
   yield takeEvery(ProjectActionTypes.TRIGGER_CREATE_NEW_PROJECT, createProjects);
+  yield takeEvery(ProjectActionTypes.TRIGGER_PATCH_PROJECT, patchProjects);
 }
 
 export {projectSaga};

@@ -23,7 +23,11 @@ export const projectReducer = (
       return {data: newData, isLoading: false};
     }
     case ProjectActionTypes.PATCH_PROJECT: {
-      return {data: state.data, isLoading: false};
+      const arrayWithProjects = state.data
+      if (arrayWithProjects === undefined) return state
+      const findId = arrayWithProjects.findIndex((el) => el.id === action.payload.id)
+      arrayWithProjects[findId] = action.payload
+      return {data: arrayWithProjects};
     }
     case ProjectActionTypes.DELETE_PROJECT: {
       const allProject = state
