@@ -12,6 +12,9 @@
     overflow: scroll;
     color: var(--main-text-color);
     resize: inherit;
+    scrollbar-color: var(--card-color-hovered) var(--background-color);
+    scrollbar-width: thin;
+
 
     &::placeholder {
       color: var(--main-text-color);
